@@ -1,0 +1,7 @@
+C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\bin\Release\SharedLibrary.dll
+C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\bin\Release\SharedLibrary.pdb
+C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\bin\Release\Newtonsoft.Json.dll
+C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\bin\Release\Newtonsoft.Json.xml
+C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\obj\Release\ProjectArchive.SharedLibrary.csprojResolveAssemblyReference.cache
+C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\obj\Release\SharedLibrary.dll
+C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\obj\Release\SharedLibrary.pdb

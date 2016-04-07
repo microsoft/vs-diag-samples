@@ -1,0 +1,9 @@
+C:\Users\kayand\Source\Repos\ProjectArchive\DataLibrary\bin\Release\DataLibrary.dll
+C:\Users\kayand\Source\Repos\ProjectArchive\DataLibrary\bin\Release\DataLibrary.pdb
+C:\Users\kayand\Source\Repos\ProjectArchive\DataLibrary\bin\Release\SharedLibrary.dll
+C:\Users\kayand\Source\Repos\ProjectArchive\DataLibrary\bin\Release\Newtonsoft.Json.dll
+C:\Users\kayand\Source\Repos\ProjectArchive\DataLibrary\bin\Release\SharedLibrary.pdb
+C:\Users\kayand\Source\Repos\ProjectArchive\DataLibrary\bin\Release\Newtonsoft.Json.xml
+C:\Users\kayand\Source\Repos\ProjectArchive\DataLibrary\obj\Release\DataLibrary.csprojResolveAssemblyReference.cache
+C:\Users\kayand\Source\Repos\ProjectArchive\DataLibrary\obj\Release\DataLibrary.dll
+C:\Users\kayand\Source\Repos\ProjectArchive\DataLibrary\obj\Release\DataLibrary.pdb
