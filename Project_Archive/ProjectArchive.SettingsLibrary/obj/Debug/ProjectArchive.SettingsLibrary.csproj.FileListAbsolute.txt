@@ -1,5 +1,0 @@
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SettingsLibrary\bin\Debug\ProjectArchive.SettingsLibrary.dll
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SettingsLibrary\bin\Debug\ProjectArchive.SettingsLibrary.pdb
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SettingsLibrary\obj\Debug\ProjectArchive.SettingsLibrary.csprojResolveAssemblyReference.cache
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SettingsLibrary\obj\Debug\ProjectArchive.SettingsLibrary.dll
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SettingsLibrary\obj\Debug\ProjectArchive.SettingsLibrary.pdb

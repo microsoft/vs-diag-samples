@@ -1,6 +1,0 @@
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\bin\Debug\SharedLibrary.dll
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\bin\Debug\SharedLibrary.pdb
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\bin\Debug\Newtonsoft.Json.dll
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\bin\Debug\Newtonsoft.Json.xml
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\obj\Debug\SharedLibrary.dll
-C:\Users\kayand\Source\Repos\ProjectArchive\ProjectArchive.SharedLibrary\obj\Debug\SharedLibrary.pdb
