@@ -51,8 +51,8 @@ namespace PhotoFilter.Win10
                 (x) => x.StorageFile.Name == file.Name && x.StorageFile.Path == file.Path
                 ).Bitmap;
 
-            //if (bitmap == null)
-            bitmap = await RetrieveAndPutBitmapAsync(file);
+            if (bitmap == null)
+                bitmap = await RetrieveAndPutBitmapAsync(file);
 
             return bitmap;
 

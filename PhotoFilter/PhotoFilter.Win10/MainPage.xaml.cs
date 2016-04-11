@@ -36,6 +36,7 @@ namespace PhotoFilter.Win10
     public sealed partial class MainPage : Page
     {
         ConcurrentBag<ImageItem> m_images;
+        private string ServerUrl = "http://photoimageserver.azurewebsites.net";
 
         public MainPage()
         {
@@ -83,7 +84,7 @@ namespace PhotoFilter.Win10
             //var downloadTasks = new List<Task>();
             foreach (var image in pictureList)
             {
-                string fileName = image.Thumbnail;
+                string fileName = image.FullImage;
                 string imageUrl = ServerUrl + "/Images/" + fileName;
                 //downloadTasks.Add(DownloadImageAsync(new Uri(imageUrl), folder, fileName));
                 await DownloadImageAsync(new Uri(imageUrl), folder, fileName);
@@ -110,17 +111,11 @@ namespace PhotoFilter.Win10
             using (bitmap.GetBitmapContext(ReadWriteMode.ReadOnly))
             {
 
-                bitmap.Resize(bitmap.PixelWidth * 10, bitmap.PixelHeight * 10, 
-                    WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                bitmap.Resize(500, 500, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
 
                 return bitmap;
             }
         }
-
-
-
-        //private string ServerUrl = "http://localhost:20476"; // for local image server
-        private string ServerUrl = "http://photoimageserver.azurewebsites.net";
 
 
         public async Task<StorageFile> DownloadImageAsync(Uri fileUri, StorageFolder folder, string fileName)
