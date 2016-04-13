@@ -121,9 +121,14 @@ namespace PhotoFilter.Win10
         public async Task<StorageFile> DownloadImageAsync(Uri fileUri, StorageFolder folder, string fileName)
         {
             var file = await folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
-            var downloader = new BackgroundDownloader();
-            var download = downloader.CreateDownload(fileUri, file);
-            var res = await download.StartAsync();
+            HttpClient hc = new HttpClient();
+            byte[] data = await hc.GetByteArrayAsync(fileUri);
+
+            using (BinaryWriter writer = new BinaryWriter(await file.OpenStreamForWriteAsync()))
+            {
+                await writer.BaseStream.WriteAsync(data, 0, data.Length);
+                await writer.BaseStream.FlushAsync();
+            }
 
             ImageItem item = new ImageItem(file);
             await item.LoadImageFromDisk();
