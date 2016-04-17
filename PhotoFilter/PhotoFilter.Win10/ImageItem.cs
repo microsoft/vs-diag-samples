@@ -101,6 +101,21 @@ namespace PhotoFilter.Win10
             return m_fullImage;
         }
 
+        public async Task<BitmapImage> GetBitmapAsync()
+        {
+            // Open a stream for the selected file.
+            // The 'using' block ensures the stream is disposed
+            // after the image is loaded.
+            BitmapImage bitmapImage = new BitmapImage();
+            using (IRandomAccessStream fileStream =
+                await m_file.OpenAsync(FileAccessMode.Read))
+            {
+                // Set the image source to the selected bitmap.
+                bitmapImage.SetSource(fileStream);
+            }
+            return bitmapImage;
+        }
+
         public async Task<byte[]> GetScaledPixelsAsync(int height, int width)
         {
             using (IRandomAccessStream fileStream = await m_file.OpenAsync(Windows.Storage.FileAccessMode.Read))
