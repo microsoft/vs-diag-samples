@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -96,6 +97,7 @@ namespace PhotoFilter.Win10
         {
             ImageItem i = (ImageItem)pictureList.SelectedItem;
             WriteableBitmap bitmap = await i.GetPictureAsync();
+            //BitmapImage bitmap = await i.GetBitmapAsync();
             double TargetHeight = this.ActualHeight - 20;
             double TargetWidth = this.ActualWidth - 20;
             imgSelectedImage.Height = TargetHeight;
