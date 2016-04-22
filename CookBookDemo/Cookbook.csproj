@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{39D356ED-27AF-40DB-9B74-CFD3641FCE63}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cookbook</RootNamespace>
+    <AssemblyName>Cookbook</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <UapDefaultAssetScale>100</UapDefaultAssetScale>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>Cookbook_StoreKey.pfx</PackageCertificateKeyFile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <ApplicationInsightsResourceId>/subscriptions/b06adfd3-9bb2-4a24-8e34-3b0ede66b206/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/Cookbook</ApplicationInsightsResourceId>
+    <PackageCertificateThumbprint>06A72DCCA0053E95796903BEBCF900E6BAA9B9AC</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ImageToBooleanConverter.cs" />
+    <Compile Include="Converters\TimeToStringConverter.cs" />
+    <Compile Include="ObjectModels\NavigationLink.cs" />
+    <Compile Include="ObjectModels\RecipeModel.cs" />
+    <Compile Include="ViewModels\RecipesViewModel.cs" />
+    <Compile Include="ViewModels\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\RecipeHandler.cs" />
+    <Compile Include="ViewModels\WebData.cs" />
+    <Compile Include="Views\Categories.xaml.cs">
+      <DependentUpon>Categories.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\InstructionPicture.xaml.cs">
+      <DependentUpon>InstructionPicture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RecipeInstructions.xaml.cs">
+      <DependentUpon>RecipeInstructions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\RecipeInstructionsViewModel.cs" />
+    <Compile Include="Views\Recipes.xaml.cs">
+      <DependentUpon>Recipes.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="app.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Cookbook_StoreKey.pfx" />
+    <None Include="Cookbook_TemporaryKey.pfx" />
+    <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\SmallLogo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Data\RecipeData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="project.json" />
+    <None Include="Service References\Application Insights\ConnectedService.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Beans.jpg" />
+    <Content Include="Images\Bread.jpg" />
+    <Content Include="Images\Chinese\Chinese_1_150_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_1_600_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_2_150_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_2_600_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_3_150_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_3_600_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_4_150_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_4_600_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_5_150_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_5_600_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_6_150_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_6_310_C.jpg" />
+    <Content Include="Images\Chinese\Chinese_6_600_C.jpg" />
+    <Content Include="Images\Chinese\chinese_group.png" />
+    <Content Include="Images\Chinese\chinese_group_detail.png" />
+    <Content Include="Images\Chinese\chinese_group_header.png" />
+    <Content Include="Images\French\French_1_150_C.jpg" />
+    <Content Include="Images\French\French_1_600_C.jpg" />
+    <Content Include="Images\French\French_2_150_C.jpg" />
+    <Content Include="Images\French\French_2_310_C.jpg" />
+    <Content Include="Images\French\French_2_600_C.jpg" />
+    <Content Include="Images\French\French_3_150_C.jpg" />
+    <Content Include="Images\French\French_3_600_C.jpg" />
+    <Content Include="Images\French\French_4_150_C.jpg" />
+    <Content Include="Images\French\French_4_600_C.jpg" />
+    <Content Include="Images\French\French_5_150_C.jpg" />
+    <Content Include="Images\French\French_5_600_C.jpg" />
+    <Content Include="Images\French\French_6_150_C.jpg" />
+    <Content Include="Images\French\French_6_600_C.jpg" />
+    <Content Include="Images\French\french_group.png" />
+    <Content Include="Images\French\french_group_detail.png" />
+    <Content Include="Images\French\french_group_header.png" />
+    <Content Include="Images\Fruit.jpg" />
+    <Content Include="Images\German\German_1_150_C.jpg" />
+    <Content Include="Images\German\German_1_600_C.jpg" />
+    <Content Include="Images\German\German_2_150_C.jpg" />
+    <Content Include="Images\German\German_2_600_C.jpg" />
+    <Content Include="Images\German\German_3_150_C.jpg" />
+    <Content Include="Images\German\German_3_600_C.jpg" />
+    <Content Include="Images\German\German_4_150_C.jpg" />
+    <Content Include="Images\German\German_4_310_C.jpg" />
+    <Content Include="Images\German\German_4_600_C.jpg" />
+    <Content Include="Images\German\German_5_150_C.jpg" />
+    <Content Include="Images\German\German_5_600_C.jpg" />
+    <Content Include="Images\German\German_6_150_C.jpg" />
+    <Content Include="Images\German\German_6_600_C.jpg" />
+    <Content Include="Images\German\german_group.png" />
+    <Content Include="Images\German\german_group_detail.png" />
+    <Content Include="Images\German\german_group_header.png" />
+    <Content Include="Images\Hero.png" />
+    <Content Include="Images\Indian\Indian_1_150_C.jpg" />
+    <Content Include="Images\Indian\Indian_1_600_C.jpg" />
+    <Content Include="Images\Indian\Indian_2_150_C.jpg" />
+    <Content Include="Images\Indian\Indian_2_600_C.jpg" />
+    <Content Include="Images\Indian\Indian_3_150_C.jpg" />
+    <Content Include="Images\Indian\Indian_3_600_C.jpg" />
+    <Content Include="Images\Indian\Indian_4_150_C.jpg" />
+    <Content Include="Images\Indian\Indian_4_600_C.jpg" />
+    <Content Include="Images\Indian\Indian_5_150_C.jpg" />
+    <Content Include="Images\Indian\Indian_5_600_C.jpg" />
+    <Content Include="Images\Indian\Indian_6_150_C.jpg" />
+    <Content Include="Images\Indian\Indian_6_600_C.jpg" />
+    <Content Include="Images\Indian\indian_group.png" />
+    <Content Include="Images\Indian\indian_group_detail.png" />
+    <Content Include="Images\Indian\indian_group_header.png" />
+    <Content Include="Images\Italian\Italian_1_150_C.jpg" />
+    <Content Include="Images\Italian\Italian_1_600_C.jpg" />
+    <Content Include="Images\Italian\Italian_2_150_C.jpg" />
+    <Content Include="Images\Italian\Italian_2_600_C.jpg" />
+    <Content Include="Images\Italian\Italian_3_150_C.jpg" />
+    <Content Include="Images\Italian\Italian_3_600_C.jpg" />
+    <Content Include="Images\Italian\Italian_4_150_C.jpg" />
+    <Content Include="Images\Italian\Italian_4_310_C.jpg" />
+    <Content Include="Images\Italian\Italian_4_600_C.jpg" />
+    <Content Include="Images\Italian\Italian_5_150_C.jpg" />
+    <Content Include="Images\Italian\Italian_5_310_C.jpg" />
+    <Content Include="Images\Italian\Italian_5_600_C.jpg" />
+    <Content Include="Images\Italian\Italian_6_150_C.jpg" />
+    <Content Include="Images\Italian\Italian_6_600_C.jpg" />
+    <Content Include="Images\Italian\italian_group.png" />
+    <Content Include="Images\Italian\italian_group_detail.png" />
+    <Content Include="Images\Italian\italian_group_header.png" />
+    <Content Include="Images\Layout\BG_tile_large.png" />
+    <Content Include="Images\Layout\BlackRectangle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Layout\CategoriesIcons\Icon_Appetizers.png" />
+    <Content Include="Images\Layout\CategoriesIcons\Icon_Breads.png" />
+    <Content Include="Images\Layout\CategoriesIcons\Icon_Desserts.png" />
+    <Content Include="Images\Layout\CategoriesIcons\Icon_Drinks.png" />
+    <Content Include="Images\Layout\CategoriesIcons\Icon_MeatPoultry.png" />
+    <Content Include="Images\Layout\CategoriesIcons\Icon_Other.png" />
+    <Content Include="Images\Layout\CategoriesIcons\Icon_Salads.png" />
+    <Content Include="Images\Layout\CategoriesIcons\Icon_Seafood.png" />
+    <Content Include="Images\Layout\CategoriesIcons\Icon_Soups.png" />
+    <Content Include="Images\Layout\CategoriesIcons\Icon_Vegetables.png" />
+    <Content Include="Images\Layout\CategoryPlaceholder.png" />
+    <Content Include="Images\Layout\CategoryPlaceholder_Hover.png" />
+    <Content Include="Images\Layout\categoryTitle.png" />
+    <Content Include="Images\Layout\categoryTitle_hover.png" />
+    <Content Include="Images\Layout\RecipeInstructionsIcons\icon_About.png" />
+    <Content Include="Images\Layout\RecipeInstructionsIcons\icon_About_Hover.png" />
+    <Content Include="Images\Layout\RecipeInstructionsIcons\icon_Camera.png" />
+    <Content Include="Images\Layout\RecipeInstructionsIcons\icon_Camera_Hover.png" />
+    <Content Include="Images\Layout\RecipeInstructionsIcons\icon_CookSteps.png" />
+    <Content Include="Images\Layout\RecipeInstructionsIcons\icon_CookSteps_Hover.png" />
+    <Content Include="Images\Layout\RecipeInstructionsIcons\icon_Nutrition.png" />
+    <Content Include="Images\Layout\RecipeInstructionsIcons\icon_Nutrition_Hover.png" />
+    <Content Include="Images\Layout\seafood.png" />
+    <Content Include="Images\Mexican\Mexican_1_150_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_1_600_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_2_150_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_2_600_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_3_150_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_3_600_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_4_150_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_4_600_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_5_150_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_5_600_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_6_150_C.jpg" />
+    <Content Include="Images\Mexican\Mexican_6_600_C.jpg" />
+    <Content Include="Images\Mexican\mexican_group.png" />
+    <Content Include="Images\Mexican\mexican_group_detail.png" />
+    <Content Include="Images\Mexican\mexican_group_header.png" />
+    <Content Include="Images\Muesli.jpg" />
+    <Content Include="Images\Tiles\Chinese_6_310_C.jpg" />
+    <Content Include="Images\Tiles\French_2_310_C.jpg" />
+    <Content Include="Images\Tiles\German_4_310_C.jpg" />
+    <Content Include="Images\Tiles\Italian_4_310_C.jpg" />
+    <Content Include="Images\Tiles\Italian_5_310_C.jpg" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\WideLogo.scale-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Resources\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <DesignData Include="SampleData\CategoriesViewModelSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </DesignData>
+    <DesignData Include="SampleData\RecipesViewModelSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </DesignData>
+    <DesignData Include="SampleData\RecipeModelSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </DesignData>
+    <Page Include="Views\Categories.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DeviceFamily-Mobile\Categories.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InstructionPicture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RecipeInstructions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Recipes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
+      <Name>Behaviors SDK %28XAML%29</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

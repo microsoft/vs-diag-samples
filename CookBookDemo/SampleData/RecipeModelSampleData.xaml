@@ -1,0 +1,59 @@
+﻿<ObjectModels:RecipeModel xmlns:ObjectModels="using:Cookbook.ObjectModels" xmlns:System="using:System" AboutThisRecipe="Eleifend morbi" Category="Nibh felis parturient placerat nisi" Id="68" RecipePicturePath="Fringilla blandit commodo" ServingSize="23" Title="Maecenas praesent aenean aliquam">
+	<ObjectModels:RecipeModel.CookingStepsImagePaths>
+		<System:String>Proin luctus vestibulum sed sem</System:String>
+		<System:String>Sit elit enim</System:String>
+		<System:String>Euismod vel feugiat</System:String>
+		<System:String>Nam sed</System:String>
+		<System:String>Adipiscing dis magnis est augue</System:String>
+		<System:String>Parturient vestibulum</System:String>
+		<System:String>Mattis gravida mauris</System:String>
+		<System:String>Dolor pharetra</System:String>
+		<System:String>Malesuada hac vestibulum erat mollis</System:String>
+		<System:String>Fames eros adipiscing iaculis</System:String>
+	</ObjectModels:RecipeModel.CookingStepsImagePaths>
+	<ObjectModels:RecipeModel.CookTime>
+		<System:TimeSpan/>
+	</ObjectModels:RecipeModel.CookTime>
+	<ObjectModels:RecipeModel.CookingSteps>
+		<System:String>Amet conubia mus cubilia habitasse</System:String>
+		<System:String>Ante dictum facilisi</System:String>
+		<System:String>Nec arcu faucibus non</System:String>
+		<System:String>Lectus dapibus</System:String>
+		<System:String>Hendrerit himenaeos habitant</System:String>
+		<System:String>Nulla inceptos interdum imperdiet egestas</System:String>
+		<System:String>Diam lobortis</System:String>
+		<System:String>Vestibulum adipiscing per</System:String>
+		<System:String>Libero ligula nascetur parturient</System:String>
+		<System:String>Litora eget vestibulum</System:String>
+	</ObjectModels:RecipeModel.CookingSteps>
+	<ObjectModels:RecipeModel.IngredientsList>
+		<System:String>Accumsan curabitur vestibulum bibendum</System:String>
+		<System:String>Nam phasellus consequat</System:String>
+		<System:String>Class sed adipiscing curae</System:String>
+		<System:String>Dictumst cras mauris parturient</System:String>
+		<System:String>Dis nullam integer donec convallis</System:String>
+		<System:String>Aptent auctor est dignissim duis</System:String>
+		<System:String>Congue hac vestibulum quisque</System:String>
+		<System:String>Elementum etiam</System:String>
+		<System:String>Vivamus facilisis aliquam fusce nunc</System:String>
+		<System:String>Leo aliquet cursus fermentum lorem</System:String>
+	</ObjectModels:RecipeModel.IngredientsList>
+	<ObjectModels:RecipeModel.NutritionInfo>
+		<System:Int32>14</System:Int32>
+		<System:Int32>19</System:Int32>
+		<System:Int32>78</System:Int32>
+		<System:Int32>12</System:Int32>
+		<System:Int32>12</System:Int32>
+		<System:Int32>67</System:Int32>
+		<System:Int32>83</System:Int32>
+		<System:Int32>17</System:Int32>
+		<System:Int32>43</System:Int32>
+		<System:Int32>79</System:Int32>
+	</ObjectModels:RecipeModel.NutritionInfo>
+	<ObjectModels:RecipeModel.PrepTime>
+		<System:TimeSpan/>
+	</ObjectModels:RecipeModel.PrepTime>
+	<ObjectModels:RecipeModel.ReadyInTime>
+		<System:TimeSpan/>
+	</ObjectModels:RecipeModel.ReadyInTime>
+</ObjectModels:RecipeModel>

@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="Cookbook.Views.InstructionPicture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cookbook.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:Cookbook.ViewModels"
+    mc:Ignorable="d">
+    <Grid Background="{ThemeResource AppBackgroundBrush}">
+        <Grid Background="{ThemeResource AppBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <CommandBar TabIndex="3" Grid.Row="0" IsOpen="True" HorizontalAlignment="Right" Background="Transparent">
+                <AppBarButton Icon="Add" Label="Add Recipe" Foreground="{StaticResource BackButtonBackgroundBrush}"/>
+                <AppBarButton Icon="Edit" Label="Edit Recipe" Foreground="{StaticResource BackButtonBackgroundBrush}"/>
+                <AppBarButton Icon="Shop" Label="Shopping" Foreground="{StaticResource BackButtonBackgroundBrush}"/>
+            </CommandBar>
+            <Grid Grid.Row="1" Background="White">
+                <Image Margin="25,25,25,40" Source="{Binding}" Stretch="Uniform"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

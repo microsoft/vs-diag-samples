@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookbook", "Cookbook.csproj", "{39D356ED-27AF-40DB-9B74-CFD3641FCE63}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Debug|ARM.ActiveCfg = Debug|ARM
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Debug|ARM.Build.0 = Debug|ARM
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Debug|ARM.Deploy.0 = Debug|ARM
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Debug|x64.ActiveCfg = Debug|x64
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Debug|x64.Build.0 = Debug|x64
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Debug|x64.Deploy.0 = Debug|x64
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Debug|x86.ActiveCfg = Debug|x86
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Debug|x86.Build.0 = Debug|x86
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Debug|x86.Deploy.0 = Debug|x86
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Release|ARM.ActiveCfg = Release|ARM
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Release|ARM.Build.0 = Release|ARM
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Release|ARM.Deploy.0 = Release|ARM
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Release|x64.ActiveCfg = Release|x64
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Release|x64.Build.0 = Release|x64
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Release|x64.Deploy.0 = Release|x64
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Release|x86.ActiveCfg = Release|x86
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Release|x86.Build.0 = Release|x86
+		{39D356ED-27AF-40DB-9B74-CFD3641FCE63}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 1
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dajaco.visualstudio.com/defaultcollection
+		SccProjectUniqueName0 = Cookbook.csproj
+		SccProjectName0 = .
+		SccAuxPath0 = https://dajaco.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

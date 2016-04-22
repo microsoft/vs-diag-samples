@@ -1,0 +1,14 @@
+﻿<ViewModels:CategoriesViewModel xmlns:ViewModels="using:Cookbook.ViewModels" xmlns:ObjectModels="using:Cookbook.ObjectModels">
+	<ViewModels:CategoriesViewModel.AllCategories>
+        <ObjectModels:CategoryItem CategoryName="Appetizers" ImagePath="Images/Layout/CategoriesIcons/Icon_Appetizers.png"/>
+        <ObjectModels:CategoryItem CategoryName="Breads" ImagePath="Images/Layout/CategoriesIcons/Icon_Breads.png"/>
+        <ObjectModels:CategoryItem CategoryName="Desserts" ImagePath="Images/Layout/CategoriesIcons/Icon_Desserts.png"/>
+        <ObjectModels:CategoryItem CategoryName="Drinks" ImagePath="Images/Layout/CategoriesIcons/Icon_Drinks.png"/>
+        <ObjectModels:CategoryItem CategoryName="Meat and Poultry" ImagePath="Images/Layout/CategoriesIcons/Icon_MeatPoultry.png"/>
+        <ObjectModels:CategoryItem CategoryName="Other" ImagePath="Images/Layout/CategoriesIcons/Icon_Other.png"/>
+        <ObjectModels:CategoryItem CategoryName="Salads" ImagePath="Images/Layout/CategoriesIcons/Icon_Salads.png"/>
+        <ObjectModels:CategoryItem CategoryName="Seafood" ImagePath="Images/Layout/CategoriesIcons/Icon_Seafood.png"/>
+        <ObjectModels:CategoryItem CategoryName="Soups" ImagePath="Images/Layout/CategoriesIcons/Icon_Soups.png"/>
+        <ObjectModels:CategoryItem CategoryName="Vegetables" ImagePath="Images/Layout/CategoriesIcons/Icon_Vegetables.png"/>
+	</ViewModels:CategoriesViewModel.AllCategories>
+</ViewModels:CategoriesViewModel>

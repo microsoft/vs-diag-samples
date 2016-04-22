@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div style="background-color: black;">
+    <h1 class="header-text header-banner">Diagnostics Shuttle</h1>
+    <p class="lead header-text">Need to get somewhere? The Diagnostics PM team is here to help!</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Vehicles</h2>
+        <progress data-bind="style: { display: vehicleProgressDisplay }"></progress>
+        <ul data-bind="foreach: vehicles" class="vehicleList">
+            <li>
+                <h3>
+                    <span data-bind="text: Make"></span>
+                    <span data-bind="text: Model"></span>
+                    <input class="btn btn-default" data-bind="click: $root.driverClicked" type="button" value="Select" />
+                </h3>
+                <img data-bind="attr: { src: PictureUrl }" />
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-6"></div>
+        <div>
+            <h2>Driver Details</h2>
+            <progress data-bind="style: { display: driverProgressDisplay }"></progress>
+            <div data-bind="style: { display: driverDisplay }">
+                <p><b>Driver:</b> <span data-bind="text: driver.Name"></span></p>
+                <img data-bind="attr: { src: driver.PictureUrl }" />
+                <p><b>Rating:</b><span data-bind="text: driver.RatingText"></span></p>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    viewModel = {};
+    viewModel.vehicleProgressDisplay = ko.observable("block");
+    viewModel.driverDisplay = ko.observable("none");
+    viewModel.driverProgressDisplay = ko.observable("none");
+    viewModel.vehicles = ko.observable([]);
+    viewModel.driver = ko.mapping.fromJS({
+        Name: 'Loading...',
+        PictureUrl: '',
+        RatingText: ''
+    });
+    ko.applyBindings(viewModel);
+
+    var sequenceNumber = 1;
+    viewModel.driverClicked = function (item, event) {
+        sequenceNumber++;
+        viewModel.driverProgressDisplay("block");
+        viewModel.driverDisplay("none");
+        driverQuery = {
+            driverLookup: JSON.stringify({
+                id: item.DriverId,
+                name: item.Driver,
+                sequenceNumber: sequenceNumber
+            })
+        };
+
+        $.post("/Home/Driver", driverQuery, function (data, status, xhrobj) {
+            viewModel.driverProgressDisplay("none");
+            ko.mapping.fromJS(data, viewModel.driver);
+            viewModel.driverDisplay("block");
+        });
+    };
+
+    $.get("/Home/Vehicles", function (data, status) {
+        viewModel.vehicles(data);
+        viewModel.driverProgressDisplay("block");
+        viewModel.vehicleProgressDisplay("none");
+        driverQuery = {
+            driverLookup: JSON.stringify({
+                id: viewModel.vehicles()[0].DriverId,
+                name: viewModel.vehicles()[0].Driver,
+                sequenceNumber: sequenceNumber
+            })
+        };
+        $.post("/Home/Driver", driverQuery, function (data, status, xhrobj) {
+            viewModel.driverProgressDisplay("none");
+            viewModel.driverDisplay("block");
+            ko.mapping.fromJS(data, viewModel.driver);
+        });
+    });
+</script>
