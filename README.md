@@ -15,6 +15,7 @@ For more details see the readme included with each application.
 |                              Application Name | Description                                                                                |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------ |
 |           [Project_Archive](Project_Archive/) | WPF app frequently used in Debugger Tips and Tricks talk                                   |  
+|           [PhotoFilter](PhotoFilter/) | UWP app demonstrating how to use Profiling Tools to find and solve performance issues                                   |  
 
 
 ## Thanks for using Visual Studio
