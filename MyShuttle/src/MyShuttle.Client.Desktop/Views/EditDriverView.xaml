@@ -1,0 +1,75 @@
+﻿<Page x:Class="MyShuttle.Client.Desktop.Views.EditDriverView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MyShuttle.Client.Desktop.Views"
+      xmlns:controls="clr-namespace:MyShuttle.Client.Desktop.Controls"
+      x:Name="DriverEditorControl"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="700"
+      Title="EditDriverViewxaml">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="85" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:Menu IsSettingsNavigationEnabled="False" IsRefreshEnabled="False" />
+
+        <Grid Grid.Row="1"
+              DataContext="{Binding CurrentDriver}"
+              Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+            </Grid.Resources>
+            
+            <Label Content="Name"></Label>
+            <TextBox Grid.Column="1" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></TextBox>
+            <Label Content="Rating Average" Grid.Row="1"></Label>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding RatingAvg, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></TextBox>
+            <Label Content="Phone" Grid.Row="2"></Label>
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Phone, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></TextBox>
+            <Image x:Name="pic" Grid.Row="3" Height="90" Width="90" Source="{Binding Picture, Converter={StaticResource ImageDataConverter}}" />
+            <StackPanel Grid.Row="3" Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Choose file..." Width="125" HorizontalAlignment="Left" Click="btnBrowseForImage_Click"></Button> 
+                    <Button Content="User placeholder" Width="125" HorizontalAlignment="Left" x:Name="btnUserPlacholder" Click="btnUserPlacholder_Click"></Button>
+                    <!--<CheckBox Content="Use placeholder image" IsChecked="False" x:Name="chkPlacholder"></CheckBox>-->
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Selected file"></Label>
+                    <Label x:Name="lblNewPicture"></Label>
+                </StackPanel>
+            </StackPanel>
+            <Button Grid.Row="6" Content="Save" Click="btnSave_Click"></Button>
+            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
+                <Label Content="Json file to update"></Label>
+                <Label x:Name="lblJsonFile" Content="{Binding BackingJsonFile, ElementName=DriverEditorControl}"></Label>
+                <Button x:Name="btnBrowse" Click="btnBrowse_Click" Content="browse..."></Button>
+                <CheckBox x:Name="chkUpdateJson" Content="Update json file" IsChecked="True"></CheckBox>
+            </StackPanel>
+            <Label Content="Driver Id" Grid.Row="4"></Label>
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding DriverId, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></TextBox>
+        </Grid>
+    </Grid>
+</Page>
