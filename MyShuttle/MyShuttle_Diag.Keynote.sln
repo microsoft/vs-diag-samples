@@ -1,17 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.25403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Client.Desktop", "src\MyShuttle.Client.Desktop\MyShuttle.Client.Desktop.csproj", "{1919B146-9D43-4FBC-A60B-E0272BCA54EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D4D9C16D-C678-489C-ADC7-CB6859BF2484}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "service", "service", "{6BA91B47-D180-473A-B6EF-2A9F847514F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Diagnostics.Service", "src\MyShuttle.Diagnostics.Service\MyShuttle.Diagnostics.Service.csproj", "{2D6E738A-2CAC-4501-B49C-02047FD1D5AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Client.Web", "src\MyShuttle.Client.Web\MyShuttle.Client.Web.csproj", "{8519C8BA-D157-4E0B-8B23-F18C1AFB5707}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Client.Web", "MyShuttle.Client.Web\MyShuttle.Client.Web.csproj", "{8519C8BA-D157-4E0B-8B23-F18C1AFB5707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Client.SharedLibrary", "src\MyShuttle.Client.SharedLibrary\MyShuttle.Client.SharedLibrary.csproj", "{66D11FD4-F878-4E4E-A73B-B7A07CF07A0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Client.SharedLibrary", "MyShuttle.Client.SharedLibrary\MyShuttle.Client.SharedLibrary.csproj", "{66D11FD4-F878-4E4E-A73B-B7A07CF07A0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

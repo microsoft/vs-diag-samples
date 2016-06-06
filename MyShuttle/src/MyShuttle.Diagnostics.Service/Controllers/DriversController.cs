@@ -17,8 +17,16 @@ namespace MyShuttle.Diagnostics.Service.Controllers
     {
         public JsonResult<List<Driver>> Get()
         {
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
             var drivers = VehiclesModel.Drivers.Values.ToList();
+            for (int i = 0; i < 100000; i++)
+            {
+                Driver a = new Driver();
+                a.DriverId = Guid.NewGuid().GetHashCode();
+                a.Name = Guid.NewGuid().ToString();
+                drivers.Add(a);
+            }
+
             var json = this.Json(drivers);
             return json;
         }

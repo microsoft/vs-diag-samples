@@ -11,11 +11,13 @@ using System.Web.Http.Results;
 using MyShuttle.Client.Services;
 using MyShuttle.Client.SharedLibrary.Cache;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 public class HomeController : Controller
 {
     private static string m_cachedResponse = null;
     private static DriverCache m_driverCache = new DriverCache();
+    private static List<Driver> m_cachedDrivers = null;
 
     public ActionResult Index()
     {
@@ -38,6 +40,7 @@ public class HomeController : Controller
 
     public JsonResult Vehicles()
     {
+        Debug.WriteLine("Loading Vehicles...");
         var vehicles = VehiclesModel.Vehicles;
 
         var json = this.Json(vehicles, JsonRequestBehavior.AllowGet);
@@ -50,7 +53,8 @@ public class HomeController : Controller
     [System.Web.Mvc.HttpPost]
     public JsonResult Driver(string driverLookup)
     {
-        var driver = GetIndividualDriver(driverLookup);
+        Debug.WriteLine("Loading Drivers...");
+        var driver = GetIndividualDriverCached(driverLookup);
         var clientDriver = new Driver()
         {
             Name = driver.Name,
@@ -62,12 +66,14 @@ public class HomeController : Controller
 
     private Driver GetDriverFromDriverList(List<Driver> drivers, DriverLookupRequest driver)
     {
+        Debug.WriteLine("Getting Driver from Driver's List");
+
         Driver selectedDriver;
 
         try
         {
             selectedDriver = 
-                drivers.Where(d => driver.id == d.DriverId).FirstOrDefault();
+                drivers.Where(d => driver.id.Equals(d.DriverId)).FirstOrDefault();
         }
         catch (Exception)
         {
@@ -94,6 +100,7 @@ public class HomeController : Controller
 
     private Driver GetIndividualDriverCached(string driverQuery)
     {
+
         var driver = m_driverCache.GetDriverFromCache(driverQuery);
 
         if (driver == null)
@@ -109,6 +116,8 @@ public class HomeController : Controller
 
     private List<Driver> GetDriverList(bool cacheResponse = false)
     {
+        Debug.WriteLine("Getting Driver's List from Backend");
+
         // Use the cached response if one exist
         string driversStr = m_cachedResponse;
         if (driversStr == null)
@@ -120,11 +129,18 @@ public class HomeController : Controller
             if (cacheResponse)
             {
                 m_cachedResponse = driversStr;
+                m_cachedDrivers = DeserializeDriversJSON(driversStr);
             }
         }
 
-        var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
+        return m_cachedDrivers;
+        var drivers = DeserializeDriversJSON(driversStr);
         return drivers;
+    }
+
+    private List<Driver> DeserializeDriversJSON(string driversStr)
+    {
+        return JsonConvert.DeserializeObject<List<Driver>>(driversStr);
     }
 
     private void SaveJpegImage(Driver driver)
