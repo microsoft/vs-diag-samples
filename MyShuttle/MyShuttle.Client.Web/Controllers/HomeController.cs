@@ -2,12 +2,8 @@
 using MyShuttle.Diagnostics.Service.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Http;
-using System.Web.Http.Results;
 using MyShuttle.Client.Services;
 using MyShuttle.Client.SharedLibrary.Cache;
 using Newtonsoft.Json;
@@ -129,18 +125,13 @@ public class HomeController : Controller
             if (cacheResponse)
             {
                 m_cachedResponse = driversStr;
-                m_cachedDrivers = DeserializeDriversJSON(driversStr);
+                //m_cachedDrivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
             }
         }
 
-        return m_cachedDrivers;
-        var drivers = DeserializeDriversJSON(driversStr);
+        //return m_cachedDrivers;
+        var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
         return drivers;
-    }
-
-    private List<Driver> DeserializeDriversJSON(string driversStr)
-    {
-        return JsonConvert.DeserializeObject<List<Driver>>(driversStr);
     }
 
     private void SaveJpegImage(Driver driver)
