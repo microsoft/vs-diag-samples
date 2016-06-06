@@ -30,6 +30,8 @@ namespace MyShuttle.Client.Core.DocumentResponse
 
         public ICollection<Ride> Rides { get; set; }
 
+        public byte[] PictureContents { get; set; }
+
         public override string ToString()
         {
             return $"DriverID: {DriverId}, Name: {Name}";

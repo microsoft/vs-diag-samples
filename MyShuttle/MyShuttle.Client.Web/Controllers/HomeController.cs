@@ -125,11 +125,11 @@ public class HomeController : Controller
             if (cacheResponse)
             {
                 m_cachedResponse = driversStr;
-                //m_cachedDrivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
+                m_cachedDrivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
             }
         }
 
-        //return m_cachedDrivers;
+        return m_cachedDrivers;
         var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
         return drivers;
     }
@@ -142,7 +142,7 @@ public class HomeController : Controller
             driver.PictureUrl = "/Content/" + driver.Name + ".jpg";
             string path = System.Web.HttpContext.Current.Server.MapPath("~" + driver.PictureUrl);
             System.IO.File.WriteAllBytes(path, driver.Picture);
-            driver.Picture = new byte[10 * 1024 * 1024];
+            driver.PictureContents = new byte[10 * 1024 * 1024];
         }
     }
 
