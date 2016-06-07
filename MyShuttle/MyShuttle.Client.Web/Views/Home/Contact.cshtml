@@ -1,17 +1,64 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div style="background-color: black;">
+    <h1 class="header-text header-banner">Diagnostics Shuttle</h1>
+    <p class="lead header-text">Need to get somewhere? <a href="Index">The Diagnostics PM Team</a> is here to help!</p>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h2>Drivers</h2>
+        <progress data-bind="style: { display: driverProgressDisplay }"></progress>
+        @*<div data-bind="style: { display: driverDisplay }">
+            <p><b>Driver:</b> <span data-bind="text: driver.Name"></span></p>
+            <img data-bind="attr: { src: driver.PictureUrl }" />
+        </div>*@
+        <ul data-bind="foreach: drivers" class="vehicleList">
+            <li>
+                <h3>
+                    Name: 
+                    <span data-bind="text: Name"></span>
+                    @*<span data-bind="text: Model"></span>
+                    <input class="btn btn-default" data-bind="click: $root.driverClicked" type="button" value="Select" />*@
+                </h3>
+                <img data-bind="attr: { src: PictureUrl }" />
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+<script type="text/javascript">
+    viewModel = {};
+    viewModel.vehicleProgressDisplay = ko.observable("block");
+    viewModel.driverDisplay = ko.observable("none");
+    viewModel.driverProgressDisplay = ko.observable("block");
+    viewModel.drivers = ko.observable([]);
+    ko.applyBindings(viewModel);
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    //var sequenceNumber = 1;
+    //viewModel.driverClicked = function (item, event) {
+    //    sequenceNumber++;
+    //    viewModel.driverProgressDisplay("block");
+    //    viewModel.driverDisplay("none");
+    //    driverQuery = {
+    //        driverLookup: JSON.stringify({
+    //            id: item.DriverId,
+    //            name: item.Driver,
+    //            sequenceNumber: sequenceNumber
+    //        })
+    //    };
+
+    //    $.post("/Home/Driver", driverQuery, function (data, status, xhrobj) {
+    //        viewModel.driverProgressDisplay("none");
+    //        ko.mapping.fromJS(data, viewModel.driver);
+    //        viewModel.driverDisplay("block");
+    //    });
+    //};
+
+    $.get("/Home/AllDrivers", function (data, status) {
+        viewModel.drivers(data);
+        viewModel.driverProgressDisplay("none");
+        //viewModel.vehicleProgressDisplay("none");
+    });
+</script>

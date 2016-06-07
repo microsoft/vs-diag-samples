@@ -29,7 +29,7 @@ public class HomeController : Controller
 
     public ActionResult Contact()
     {
-        ViewBag.Message = "Your contact page.";
+        //GetAllDrivers();
 
         return View();
     }
