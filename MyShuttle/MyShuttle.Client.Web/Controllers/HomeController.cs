@@ -34,11 +34,49 @@ public class HomeController : Controller
         return View();
     }
 
+
+    public List<Driver> GetAllDrivers()
+    {
+        if (Debugger.IsAttached)
+        {
+            Debugger.Break();
+        }
+        List<Driver> allDrivers;
+        allDrivers =  SortDriverListByName(TrimDriverListById(GetDriverList(), 30));
+        return allDrivers;
+    }
+
+    public List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
+    {
+        List<Driver> trimmedDriverList = new List<Driver>();
+        trimmedDriverList = allDrivers.Where(d => d.DriverId <= maxId && d.DriverId > 0).ToList();
+
+        return trimmedDriverList;
+    }
+
+    public List<Driver> SortDriverListByName(List<Driver> allDrivers)
+    {
+        List<Driver> sortedDriverList = new List<Driver>();
+        sortedDriverList = allDrivers.OrderBy(d => d.Name).ToList();
+        return sortedDriverList;
+    }
+
+    public JsonResult AllDrivers()
+    {
+        Debug.WriteLine("Loading All Drivers...");
+        var allDrivers = GetAllDrivers();
+        var json = this.Json(allDrivers, JsonRequestBehavior.AllowGet);
+        json.MaxJsonLength = int.MaxValue;
+        SaveJpegImages(allDrivers);
+        return json;
+    }
+
+
     public JsonResult Vehicles()
     {
         Debug.WriteLine("Loading Vehicles...");
         var vehicles = VehiclesModel.Vehicles;
-
+        
         var json = this.Json(vehicles, JsonRequestBehavior.AllowGet);
         json.MaxJsonLength = int.MaxValue;
         SaveJpegImages(vehicles);
@@ -69,7 +107,7 @@ public class HomeController : Controller
         try
         {
             selectedDriver = 
-                drivers.Where(d => driver.id.Equals(d.DriverId)).FirstOrDefault();
+            drivers.Where(d => driver.id.Equals(d.DriverId)).FirstOrDefault();
         }
         catch (Exception)
         {
@@ -154,6 +192,17 @@ public class HomeController : Controller
             vehicle.PictureUrl = "/Content/" + vehicle.Make + vehicle.Model + ".jpg";
             string path = System.Web.HttpContext.Current.Server.MapPath("~" + vehicle.PictureUrl);
             System.IO.File.WriteAllBytes(path, vehicle.Picture);
+        }
+    }
+
+    private void SaveJpegImages(IEnumerable<Driver> allDrivers)
+    {
+        foreach (var driver in allDrivers)
+        {
+            var pictureBytes = driver.Picture;
+            driver.PictureUrl = "/Content/" + driver.Name + ".jpg";
+            string path = System.Web.HttpContext.Current.Server.MapPath("~" + driver.PictureUrl);
+            System.IO.File.WriteAllBytes(path, driver.Picture);
         }
     }
 }
