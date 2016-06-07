@@ -46,7 +46,7 @@ public class HomeController : Controller
         return allDrivers;
     }
 
-    public List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
+    private List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
     {
         List<Driver> trimmedDriverList = new List<Driver>();
         trimmedDriverList = allDrivers.Where(d => d.DriverId <= maxId && d.DriverId > 0).ToList();
@@ -54,11 +54,18 @@ public class HomeController : Controller
         return trimmedDriverList;
     }
 
-    public List<Driver> SortDriverListByName(List<Driver> allDrivers)
+    private List<Driver> SortDriverListByName(List<Driver> allDrivers)
     {
         List<Driver> sortedDriverList = new List<Driver>();
-        sortedDriverList = allDrivers.OrderBy(d => d.Name).ToList();
+        sortedDriverList = OrderList(allDrivers);
         return sortedDriverList;
+    }
+
+    private List<Driver> OrderList(List<Driver> listToOrder)
+    {
+        List<Driver> orderedDriverList = new List<Driver>();
+        listToOrder.OrderBy(d => d.Name).ToList();
+        return orderedDriverList;
     }
 
     public JsonResult AllDrivers()
@@ -167,7 +174,7 @@ public class HomeController : Controller
             }
         }
 
-        return m_cachedDrivers;
+        //return m_cachedDrivers;
         var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
         return drivers;
     }
