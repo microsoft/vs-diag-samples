@@ -42,7 +42,7 @@ public class HomeController : Controller
             Debugger.Break();
         }
         List<Driver> allDrivers;
-        allDrivers =  SortDriverListByName(TrimDriverListById(GetDriverList(), 30));
+        allDrivers = SortDriverListByName(TrimDriverListById(GetDriverList(), 30));
         return allDrivers;
     }
 
@@ -83,7 +83,7 @@ public class HomeController : Controller
     {
         Debug.WriteLine("Loading Vehicles...");
         var vehicles = VehiclesModel.Vehicles;
-        
+
         var json = this.Json(vehicles, JsonRequestBehavior.AllowGet);
         json.MaxJsonLength = int.MaxValue;
         SaveJpegImages(vehicles);
@@ -113,7 +113,7 @@ public class HomeController : Controller
 
         try
         {
-            selectedDriver = 
+            selectedDriver =
             drivers.Where(d => driver.name.Equals(d.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
         }
         catch (Exception)
@@ -170,14 +170,21 @@ public class HomeController : Controller
             if (cacheResponse)
             {
                 m_cachedResponse = driversStr;
-                m_cachedDrivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
+                //m_cachedDrivers = DeserializeDriversJSON(driversStr);
             }
         }
 
         //return m_cachedDrivers;
-        var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
+        var drivers = DeserializeDriversJSON(driversStr);
         return drivers;
     }
+
+    private List<Driver> DeserializeDriversJSON(string driversStr)
+    {
+        return JsonConvert.DeserializeObject<List<Driver>>(driversStr);
+    }
+
+
 
     private void SaveJpegImage(Driver driver)
     {
