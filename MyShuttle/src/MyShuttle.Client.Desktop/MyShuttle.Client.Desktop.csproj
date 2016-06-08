@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1919B146-9D43-4FBC-A60B-E0272BCA54EC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyShuttle.Client.Desktop</RootNamespace>
+    <AssemblyName>MyShuttle.Client.Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>moth_rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\packages\Autofac.3.3.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Behaviors\NullPlaceHoldersBehavior.cs" />
+    <Compile Include="Behaviors\StoryboardCompleteBehavior.cs" />
+    <Compile Include="Controls\VehicleCamera.xaml.cs">
+      <DependentUpon>VehicleCamera.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CircularProgressBar.xaml.cs">
+      <DependentUpon>CircularProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Details.xaml.cs">
+      <DependentUpon>Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Rating.xaml.cs">
+      <DependentUpon>Rating.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Star.xaml.cs">
+      <DependentUpon>Star.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StatisticItem.xaml.cs">
+      <DependentUpon>StatisticItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\NotBoolConverter.cs" />
+    <Compile Include="Converters\NotBoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\NotNullBoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\FormatConverter.cs" />
+    <Compile Include="Converters\ImageDataConverter.cs" />
+    <Compile Include="Converters\RectConverter.cs" />
+    <Compile Include="Converters\SumConverter.cs" />
+    <Compile Include="Converters\SumHalfOfConverter.cs" />
+    <Compile Include="Converters\ToUpperConverter.cs" />
+    <Compile Include="Core\Converters\DateTimeToFormattedDateConverter.cs" />
+    <Compile Include="Core\Converters\DateTimeToTimeConverter.cs" />
+    <Compile Include="Core\Converters\DistanceToStringConverter.cs" />
+    <Compile Include="Core\Converters\EnumEqualityToBooleanConverter.cs" />
+    <Compile Include="Core\Converters\NullToBoolWithOptionalInverseConverter.cs" />
+    <Compile Include="Core\Converters\PriceToStringConverter.cs" />
+    <Compile Include="Core\Converters\RatingToBoolConverter.cs" />
+    <Compile Include="Core\Converters\VehicleStatusToBoolConverter.cs" />
+    <Compile Include="Core\CoreResources.Designer.cs">
+      <DependentUpon>CoreResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Core\DocumentResponse\RidesAnalyticInfo.cs" />
+    <Compile Include="Core\DocumentResponse\SummaryAnalyticInfo.cs" />
+    <Compile Include="Core\Infrastructure\Abstractions\Repositories\IApplicationDataRepository.cs" />
+    <Compile Include="Core\Infrastructure\Abstractions\Services\IApplicationSettingServiceSingleton.cs" />
+    <Compile Include="Core\Infrastructure\Abstractions\Services\IApplicationStorageService.cs" />
+    <Compile Include="Core\Infrastructure\Abstractions\Services\ILocationServiceSingleton.cs" />
+    <Compile Include="Core\Infrastructure\ApplicationSettingServiceSingleton.cs" />
+    <Compile Include="Core\Infrastructure\ApplicationStorageService.cs" />
+    <Compile Include="Core\Infrastructure\LocationServiceSingleton.cs" />
+    <Compile Include="Core\Model\Enums\RideDetailWorkflow.cs" />
+    <Compile Include="Core\Model\GroupRide.cs" />
+    <Compile Include="Core\Model\Location.cs" />
+    <Compile Include="Core\Model\LocationCalculatedEventArgs.cs" />
+    <Compile Include="Core\Providers\HumanizedDateProvider.cs" />
+    <Compile Include="Core\ServiceAgents\AnalyticsService.cs" />
+    <Compile Include="Core\ServiceAgents\CarriersService.cs" />
+    <Compile Include="Core\ServiceAgents\CustomersService.cs" />
+    <Compile Include="Core\ServiceAgents\EmployeesService.cs" />
+    <Compile Include="Core\ServiceAgents\Interfaces\IAnalyticsService.cs" />
+    <Compile Include="Core\ServiceAgents\Interfaces\ICarriersService.cs" />
+    <Compile Include="Core\ServiceAgents\Interfaces\ICustomersService.cs" />
+    <Compile Include="Core\ServiceAgents\Interfaces\IDriversService.cs" />
+    <Compile Include="Core\ServiceAgents\Interfaces\IEmployeesService.cs" />
+    <Compile Include="Core\ServiceAgents\Interfaces\IMyShuttleClient.cs" />
+    <Compile Include="Core\ServiceAgents\Interfaces\IRidesService.cs" />
+    <Compile Include="Core\ServiceAgents\MyShuttleClient.cs" />
+    <Compile Include="Core\ServiceAgents\RidesAnalyticInfo.cs" />
+    <Compile Include="Core\ServiceAgents\RidesService.cs" />
+    <Compile Include="Core\ViewModels\Base\NavegableViewModel.cs" />
+    <Compile Include="Core\ViewModels\Behavoirs\ICanGoBackViewModel.cs" />
+    <Compile Include="Core\ViewModels\CompanyRidesViewModel.cs" />
+    <Compile Include="Core\ViewModels\InterfacesForDependencyInjection\ICompanyRidesViewModel.cs" />
+    <Compile Include="Core\ViewModels\InterfacesForDependencyInjection\IMyRidesViewModel.cs" />
+    <Compile Include="Core\ViewModels\InterfacesForDependencyInjection\ISettingsViewModel.cs" />
+    <Compile Include="Core\ViewModels\InterfacesForDependencyInjection\IVehiclesByDistanceViewModel.cs" />
+    <Compile Include="Core\ViewModels\InterfacesForDependencyInjection\IVehiclesByPriceViewModel.cs" />
+    <Compile Include="Core\ViewModels\InterfacesForDependencyInjection\IVehiclesInMapViewModel.cs" />
+    <Compile Include="Core\ViewModels\InterfacesForDependencyInjection\IVehiclesViewModel.cs" />
+    <Compile Include="Core\ViewModels\MainViewModel.cs" />
+    <Compile Include="Core\ViewModels\MyRidesViewModel.cs" />
+    <Compile Include="Core\ViewModels\RideDetailViewModel.cs" />
+    <Compile Include="Core\ViewModels\SettingsViewModel.cs" />
+    <Compile Include="Core\ViewModels\VehicleDetailViewModel.cs" />
+    <Compile Include="Core\ViewModels\VehiclesByDistanceViewModel.cs" />
+    <Compile Include="Core\ViewModels\VehiclesByPriceViewModel.cs" />
+    <Compile Include="Core\ViewModels\VehiclesInMapViewModel.cs" />
+    <Compile Include="Core\ViewModels\VehiclesViewModelBase.cs" />
+    <Compile Include="Design\DesignCameraViewModel.cs" />
+    <Compile Include="Design\DesignDetailsViewModel.cs" />
+    <Compile Include="Design\DesignMainViewModel.cs" />
+    <Compile Include="Behaviors\DynamicColumnsBehavior.cs" />
+    <Compile Include="Infrastructure\ApplicationDataRepository.cs" />
+    <Compile Include="Infrastructure\IocContainer.cs" />
+    <Compile Include="Infrastructure\NavigationHelper.cs" />
+    <Compile Include="Infrastructure\RelayCommand.cs" />
+    <Compile Include="Resources\LocalizedResources.cs" />
+    <Compile Include="Resources\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CameraViewModel.cs" />
+    <Compile Include="ViewModels\DetailsViewModel.cs" />
+    <Compile Include="ViewModels\EditDriverViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MyEventArgs.cs" />
+    <Compile Include="ViewModels\ObservableViewModel.cs" />
+    <Compile Include="ViewModels\StatisticsViewModel.cs" />
+    <Compile Include="Views\CameraView.xaml.cs">
+      <DependentUpon>CameraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditDriverView.xaml.cs">
+      <DependentUpon>EditDriverView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\VehicleCamera.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Rating.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Star.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\StatisticItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CameraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditDriverView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Core\CoreResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoreResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Assets\fonts\OpenSans-Bold.ttf" />
+    <Resource Include="Assets\fonts\OpenSans-BoldItalic.ttf" />
+    <Resource Include="Assets\fonts\OpenSans-ExtraBold.ttf" />
+    <Resource Include="Assets\fonts\OpenSans-ExtraBoldItalic.ttf" />
+    <Resource Include="Assets\fonts\OpenSans-Italic.ttf" />
+    <Resource Include="Assets\fonts\OpenSans-Light.ttf" />
+    <Resource Include="Assets\fonts\OpenSans-LightItalic.ttf" />
+    <Resource Include="Assets\fonts\OpenSans-Regular.ttf" />
+    <Resource Include="Assets\fonts\OpenSans-Semibold.ttf" />
+    <Resource Include="Assets\fonts\OpenSans-SemiboldItalic.ttf" />
+    <None Include="packages.config" />
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\camera-car.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\camera.png" />
+    <Resource Include="Design\main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\star_off.png" />
+    <Resource Include="Assets\star_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\star_on_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\close_button.png" />
+    <Resource Include="Assets\maximize_button.png" />
+    <Resource Include="Assets\minimize_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\refresh_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\bg_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icon_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\camera_icon_x2.png" />
+    <Resource Include="Assets\vehicles_icon_x2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icon-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\driver_unknow_icon.png" />
+    <Resource Include="Assets\loading_small_icon.png" />
+    <Resource Include="Assets\vehicle_unknow_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\start_bt.png" />
+    <Resource Include="Assets\vehicle_bg.png" />
+    <Resource Include="Assets\vehicle_black_bg.png" />
+    <Resource Include="Design\vehicle_cam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Pontiac_G5_coupe.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\settings_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyShuttle.Client.SharedLibrary\MyShuttle.Client.SharedLibrary.csproj">
+      <Project>{66d11fd4-f878-4e4e-a73b-b7a07cf07a0b}</Project>
+      <Name>MyShuttle.Client.SharedLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
