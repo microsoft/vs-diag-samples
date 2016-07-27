@@ -20,6 +20,8 @@ namespace MyShuttle.Client.Core.DocumentResponse
 
         public Carrier Carrier { get; set; }
 
+        public string RatingText { get; set; }
+
         public int? VehicleId { get; set; }
 
         public double RatingAvg { get; set; }

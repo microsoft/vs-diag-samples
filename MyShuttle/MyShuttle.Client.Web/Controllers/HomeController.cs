@@ -8,6 +8,7 @@ using MyShuttle.Client.Services;
 using MyShuttle.Client.SharedLibrary.Cache;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using MyShuttle.Client.Web.Models;
 
 public class HomeController : Controller
 {
@@ -96,11 +97,38 @@ public class HomeController : Controller
     {
         Debug.WriteLine("Loading Drivers...");
         var driver = GetIndividualDriverCached(driverLookup);
-        var clientDriver = new Driver()
+
+        Driver clientDriver = null;
+
+        Console.WriteLine("Getting driver ratings...");
+        try
         {
-            Name = driver.Name,
-            PictureUrl = driver.PictureUrl
-        };
+            using (var db = new RatingsContext())
+            {
+                var results = from driverRating in db.DriverRatings
+                              where driverRating.DriverId == driver.DriverId
+                              select driverRating;
+
+                double ratingAvg = results.First().RatingAvg;
+                string ratingText = String.Format("{0:F1} out of 5", ratingAvg);
+
+                //string ratingText = results.Count() > 0 ?
+                //    String.Format("{0:F1} out of 5", results.First().RatingAvg) :
+                //    "Unrated";
+
+                clientDriver = new Driver()
+                {
+                    Name = driver.Name,
+                    PictureUrl = driver.PictureUrl,
+                    RatingText = ratingText
+                };
+            }
+        }
+        catch (Exception)
+        {
+            // Fail gracefully in case the database connection goes down
+        }
+
         var json = Json(clientDriver, JsonRequestBehavior.AllowGet);
         return json;
     }

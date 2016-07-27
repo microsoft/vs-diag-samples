@@ -29,6 +29,7 @@
             <div data-bind="style: { display: driverDisplay }">
                 <p><b>Driver:</b> <span data-bind="text: driver.Name"></span></p>
                 <img data-bind="attr: { src: driver.PictureUrl }" />
+                <p><b>Rating:</b><span data-bind="text: driver.RatingText"></span></p>
             </div>
         </div>
     </div>
@@ -40,7 +41,8 @@
     viewModel.vehicles = ko.observable([]);
     viewModel.driver = ko.mapping.fromJS({
         Name: 'Loading...',
-        PictureUrl: ''
+        PictureUrl: '',
+        RatingText: ''
     });
     ko.applyBindings(viewModel);
 
