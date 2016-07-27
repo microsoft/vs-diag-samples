@@ -16,6 +16,7 @@ For more details see the readme included with each application.
 | ---------------------------------------- | ------------------------------------------------------------------------------------------ |
 |           [Project_Archive](Project_Archive/) | WPF app frequently used in Debugger Tips and Tricks talk                                   |  
 |           [PhotoFilter](PhotoFilter/) | UWP app demonstrating how to use Profiling Tools to find and solve performance issues                                   |  
+|           [MyShuttle](MyShuttle/) | Web app used to demonstrate both Debugging and Profiling and tools to find issues faster                                   |  
 
 
 ## Thanks for using Visual Studio
