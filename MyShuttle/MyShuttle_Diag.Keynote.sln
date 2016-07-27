@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.25403.0
+VisualStudioVersion = 15.0.25427.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Client.Desktop", "src\MyShuttle.Client.Desktop\MyShuttle.Client.Desktop.csproj", "{1919B146-9D43-4FBC-A60B-E0272BCA54EC}"
 EndProject
@@ -19,6 +19,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Client.Web", "MyShuttle.Client.Web\MyShuttle.Client.Web.csproj", "{8519C8BA-D157-4E0B-8B23-F18C1AFB5707}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Client.SharedLibrary", "MyShuttle.Client.SharedLibrary\MyShuttle.Client.SharedLibrary.csproj", "{66D11FD4-F878-4E4E-A73B-B7A07CF07A0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.SettingsLibrary", "MyShuttle.SettingsLibrary\MyShuttle.SettingsLibrary.csproj", "{9C02ECED-AF6A-42EC-A6CD-E32C5CC04449}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{66D11FD4-F878-4E4E-A73B-B7A07CF07A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66D11FD4-F878-4E4E-A73B-B7A07CF07A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66D11FD4-F878-4E4E-A73B-B7A07CF07A0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C02ECED-AF6A-42EC-A6CD-E32C5CC04449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C02ECED-AF6A-42EC-A6CD-E32C5CC04449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C02ECED-AF6A-42EC-A6CD-E32C5CC04449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C02ECED-AF6A-42EC-A6CD-E32C5CC04449}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

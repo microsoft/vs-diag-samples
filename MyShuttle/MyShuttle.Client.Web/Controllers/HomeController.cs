@@ -37,35 +37,59 @@ public class HomeController : Controller
 
     public List<Driver> GetAllDrivers()
     {
-        if (Debugger.IsAttached)
-        {
-            Debugger.Break();
-        }
-        List<Driver> allDrivers;
-        allDrivers = SortDriverListByName(TrimDriverListById(GetDriverList(), 30));
-        return allDrivers;
+        List<Driver> allDrivers; 
+        allDrivers = GetDriverList();
+
+        MyShuttle.SettingsLibrary.FileUtilities localCustomSettings = new MyShuttle.SettingsLibrary.FileUtilities();
+
+        List<Driver> TrimmedDriverList;
+        TrimmedDriverList = TrimDriverListById(allDrivers, getMaxId());
+
+        List<Driver> SortedDriverList;
+        SortedDriverList = SortDriverListBySettings(TrimmedDriverList);
+
+        return SortedDriverList;
     }
 
     private List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
     {
-        List<Driver> trimmedDriverList = new List<Driver>();
-        trimmedDriverList = allDrivers.Where(d => d.DriverId <= maxId && d.DriverId > 0).ToList();
+
+        List<Driver> trimmedDriverList = initializeList();
+
+        foreach (Driver driver in allDrivers)
+        {
+            if (driver.DriverId <= maxId && driver.DriverId > 0)
+            {
+                trimmedDriverList.Add(driver);
+            }
+        }
 
         return trimmedDriverList;
     }
 
-    private List<Driver> SortDriverListByName(List<Driver> allDrivers)
+    private List<Driver> initializeList()
     {
-        List<Driver> sortedDriverList = new List<Driver>();
+        //ToDo setup code to initalize list to return new List<Driver>()
+        return null;
+    }
+
+    private List<Driver> SortDriverListBySettings(List<Driver> allDrivers)
+    {
+        List<Driver> sortedDriverList = initializeList();
         sortedDriverList = OrderList(allDrivers);
         return sortedDriverList;
     }
 
     private List<Driver> OrderList(List<Driver> listToOrder)
     {
-        List<Driver> orderedDriverList = new List<Driver>();
-        listToOrder.OrderBy(d => d.Name).ToList();
+        List<Driver> orderedDriverList = initializeList();
+        orderedDriverList = listToOrder.OrderBy(d => d.Name).ToList();
         return orderedDriverList;
+    }
+
+    private int getMaxId()
+    {
+        return 30;
     }
 
     public JsonResult AllDrivers()
