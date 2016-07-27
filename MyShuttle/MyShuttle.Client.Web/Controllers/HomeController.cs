@@ -110,7 +110,11 @@ public class HomeController : Controller
 
         var json = this.Json(vehicles, JsonRequestBehavior.AllowGet);
         json.MaxJsonLength = int.MaxValue;
-        SaveJpegImages(vehicles);
+        foreach (var vehicle in vehicles)
+        {
+            SaveJpegImage(vehicle);
+        }
+        
         return json;
     }
 
@@ -216,15 +220,14 @@ public class HomeController : Controller
         }
     }
 
-    private void SaveJpegImages(IEnumerable<Vehicle> vehicles)
+    private void SaveJpegImage(Vehicle vehicle)
     {
-        foreach (var vehicle in vehicles)
-        {
+        
             var pictureBytes = vehicle.Picture;
             vehicle.PictureUrl = "/Content/" + vehicle.Make + vehicle.Model + ".jpg";
             string path = System.Web.HttpContext.Current.Server.MapPath("~" + vehicle.PictureUrl);
             System.IO.File.WriteAllBytes(path, vehicle.Picture);
-        }
+       
     }
 
     private void SaveJpegImages(IEnumerable<Driver> allDrivers)
