@@ -194,20 +194,14 @@ public class HomeController : Controller
             if (cacheResponse)
             {
                 m_cachedResponse = driversStr;
-                //m_cachedDrivers = DeserializeDriversJSON(driversStr);
+                //m_cachedDrivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
             }
         }
 
         //return m_cachedDrivers;
-        var drivers = DeserializeDriversJSON(driversStr);
+        var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
         return drivers;
     }
-
-    private List<Driver> DeserializeDriversJSON(string driversStr)
-    {
-        return JsonConvert.DeserializeObject<List<Driver>>(driversStr);
-    }
-
 
 
     private void SaveJpegImage(Driver driver)
