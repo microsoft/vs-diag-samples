@@ -37,10 +37,8 @@ public class HomeController : Controller
 
     public List<Driver> GetAllDrivers()
     {
-        if (Debugger.IsAttached)
-        {
-            Debugger.Break();
-        }
+       MyShuttle.SettingsLibrary.FileUtilities localCustomSettings = new MyShuttle.SettingsLibrary.FileUtilities();
+                
         List<Driver> allDrivers;
         allDrivers = SortDriverListByName(TrimDriverListById(GetDriverList(), 30));
         return allDrivers;
@@ -64,7 +62,7 @@ public class HomeController : Controller
     private List<Driver> OrderList(List<Driver> listToOrder)
     {
         List<Driver> orderedDriverList = new List<Driver>();
-        listToOrder.OrderBy(d => d.Name).ToList();
+        orderedDriverList = listToOrder.OrderBy(d => d.Name).ToList();
         return orderedDriverList;
     }
 

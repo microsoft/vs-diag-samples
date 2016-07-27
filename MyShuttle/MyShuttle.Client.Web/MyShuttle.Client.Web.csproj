@@ -261,6 +261,10 @@
       <Project>{66d11fd4-f878-4e4e-a73b-b7a07cf07a0b}</Project>
       <Name>MyShuttle.Client.SharedLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyShuttle.SettingsLibrary\MyShuttle.SettingsLibrary.csproj">
+      <Project>{9c02eced-af6a-42ec-a6cd-e32c5cc04449}</Project>
+      <Name>MyShuttle.SettingsLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
