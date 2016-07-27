@@ -19,7 +19,7 @@ namespace MyShuttle.Diagnostics.Service.Controllers
         {
             //Thread.Sleep(2000);
             var drivers = VehiclesModel.Drivers.Values.ToList();
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Driver a = new Driver();
                 a.DriverId = Guid.NewGuid().GetHashCode();
