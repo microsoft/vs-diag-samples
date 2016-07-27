@@ -57,17 +57,34 @@ namespace MyShuttle.SettingsLibrary
             {
 
                 Debug.WriteLine(ex.Message);
-                throw new System.Collections.Generic.KeyNotFoundException("Key Not Found", ex);
+                throw new System.Exception("Settings Not Loaded", ex);
             }
         }
 
         [DebuggerNonUserCode]
         public string GetKeyValue(string key, string name)
         {
+            var val ="";
+            try
+            {
+                val = ReallyGetKeyValue(key, name);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                throw new ArgumentException("Key Not Found", ex);
+            }
+            return val;
+        }
+
+        [DebuggerNonUserCode]
+        public string ReallyGetKeyValue(string key, string name)
+        {
             var val = (string)Registry.GetValue(key, name, null);
             if (val == null)
             {
-                throw new ArgumentException($"Registry Key {key + name} does not exist");
+
+                throw new System.Collections.Generic.KeyNotFoundException($"Registry Key {key + name} does not exist");
             }
             return val;
         }
