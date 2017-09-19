@@ -138,8 +138,7 @@ public class HomeController : Controller
 
         try
         {
-            selectedDriver =
-            drivers.Where(d => driver.name.Equals(d.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+            selectedDriver = drivers.Where(d => driver.id.Equals(d.DriverId)).FirstOrDefault();
         }
         catch (Exception)
         {
@@ -195,13 +194,13 @@ public class HomeController : Controller
             if (cacheResponse)
             {
                 m_cachedResponse = driversStr;
-                //m_cachedDrivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
+                m_cachedDrivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
             }
         }
 
-        //return m_cachedDrivers;
-        var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
-        return drivers;
+        return m_cachedDrivers;
+        //var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
+        //return drivers;
     }
 
 

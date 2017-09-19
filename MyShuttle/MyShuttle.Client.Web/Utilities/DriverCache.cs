@@ -13,16 +13,16 @@ public class DriverCache
 
     public void AddDriverToCache(string key, Driver driver)
     {
-        //var driverInfo = JsonConvert.DeserializeObject<DriverLookupRequest>(key);
-        //key = driverInfo.id.ToString();
+        var driverInfo = JsonConvert.DeserializeObject<DriverLookupRequest>(key);
+        key = driverInfo.id.ToString();
 
         m_cache[key] = driver;
     }
 
     public Driver GetDriverFromCache(string key)
     {
-        //var driverInfo = JsonConvert.DeserializeObject<DriverLookupRequest>(key);
-        //key = driverInfo.id.ToString();
+        var driverInfo = JsonConvert.DeserializeObject<DriverLookupRequest>(key);
+        key = driverInfo.id.ToString();
 
         Driver driver = null;
         m_cache.TryGetValue(key, out driver);
