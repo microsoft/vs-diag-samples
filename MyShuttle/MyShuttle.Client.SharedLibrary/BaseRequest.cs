@@ -68,7 +68,7 @@ namespace MyShuttle.Client.Services
             return httpClient;
         }
 
-        string LocalUrl = "http://localhost:39012/api/Vehicles";
+        string LocalUrl = "http://myshuttleservice.azurewebsites.net/api/Vehicles";
 
         protected async Task<int> GetCountAsync(string url)
         {
