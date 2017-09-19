@@ -42,13 +42,10 @@ public class HomeController : Controller
 
         MyShuttle.SettingsLibrary.FileUtilities localCustomSettings = new MyShuttle.SettingsLibrary.FileUtilities();
 
-        List<Driver> TrimmedDriverList;
-        TrimmedDriverList = TrimDriverListById(allDrivers, getMaxId());
+        List<Driver> TrimmedandSortedDriverList;
+        TrimmedandSortedDriverList = SortDriverListBySettings(TrimDriverListById(allDrivers, getMaxId()));
 
-        List<Driver> SortedDriverList;
-        SortedDriverList = SortDriverListBySettings(TrimmedDriverList);
-
-        return SortedDriverList;
+        return TrimmedandSortedDriverList;
     }
 
     private List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
@@ -83,7 +80,7 @@ public class HomeController : Controller
     private List<Driver> OrderList(List<Driver> listToOrder)
     {
         List<Driver> orderedDriverList = initializeList();
-        orderedDriverList = listToOrder.OrderBy(d => d.Name).ToList();
+        listToOrder.OrderBy(d => d.Name).ToList();
         return orderedDriverList;
     }
 
