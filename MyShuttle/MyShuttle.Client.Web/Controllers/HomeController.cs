@@ -37,7 +37,7 @@ public class HomeController : Controller
 
     public List<Driver> GetBestDrivers()
     {
-        int ratingThreshold = 5;
+        int ratingThreshold = 10;
         this.m_driverManager = new DriverManager(GetDriverList());
         m_driverManager.TrimDriversWithLowRatings(ratingThreshold);
         m_driverManager.SortDriversByRating();
