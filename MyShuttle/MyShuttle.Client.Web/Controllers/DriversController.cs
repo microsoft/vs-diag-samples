@@ -18,7 +18,8 @@ namespace MyShuttle.Client.Web.Controllers
 {
     public class DriversController : ApiController
     {
-        const string SeconardyService = "http://myshuttleservice.azurewebsites.net/";
+        //const string SeconardyService = "http://myshuttleservice.azurewebsites.net/";
+        const string SeconardyService = "http://localhost:39012/";
         const string DriversWebApiUrl = "/api/Drivers";
 
         // GET: api/Drivers
