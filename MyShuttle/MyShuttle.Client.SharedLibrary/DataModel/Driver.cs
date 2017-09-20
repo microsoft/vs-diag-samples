@@ -32,9 +32,9 @@ namespace MyShuttle.Client.Core.DocumentResponse
 
         public byte[] PictureContents { get; set; }
 
-        //public override string ToString()
-        //{
-        //    return $"DriverID: {DriverId}, Name: {Name}";
-        //}
+        public override string ToString()
+        {
+            return $"DriverID: {DriverId}, Name: {Name}";
+        }
     }
 }

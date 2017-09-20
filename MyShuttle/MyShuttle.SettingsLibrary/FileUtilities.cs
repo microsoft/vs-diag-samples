@@ -56,8 +56,8 @@ namespace MyShuttle.SettingsLibrary
             catch (Exception ex)
             {
 
-                Debug.WriteLine(ex.Message);
-                throw new System.Exception("Settings Not Loaded", ex);
+                //Debug.WriteLine(ex.Message);
+                //throw new System.Exception("Settings Not Loaded", ex);
             }
         }
 
@@ -71,8 +71,8 @@ namespace MyShuttle.SettingsLibrary
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                throw new ArgumentException("Key Not Found", ex);
+                //Debug.WriteLine(ex.Message);
+                //throw new ArgumentException("Key Not Found", ex);
             }
             return val;
         }
@@ -84,7 +84,7 @@ namespace MyShuttle.SettingsLibrary
             if (val == null)
             {
 
-                throw new System.Collections.Generic.KeyNotFoundException($"Registry Key {key + name} does not exist");
+                //throw new System.Collections.Generic.KeyNotFoundException($"Registry Key {key + name} does not exist");
             }
             return val;
         }

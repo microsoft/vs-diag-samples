@@ -14,6 +14,7 @@ public class HomeController : Controller
     private static string m_cachedResponse = null;
     private static DriverCache m_driverCache = new DriverCache();
     private static List<Driver> m_cachedDrivers = null;
+    public DriverManager m_driverManager = null;
 
     public ActionResult Index()
     {
@@ -34,18 +35,14 @@ public class HomeController : Controller
         return View();
     }
 
-
-    public List<Driver> GetAllDrivers()
+    public List<Driver> GetBestDrivers()
     {
-        List<Driver> allDrivers; 
-        allDrivers = GetDriverList();
+        int ratingThreshold = 5;
+        this.m_driverManager = new DriverManager(GetDriverList());
+        m_driverManager.TrimDriversWithLowRatings(ratingThreshold);
+        m_driverManager.SortDriversByRating();
 
-        MyShuttle.SettingsLibrary.FileUtilities localCustomSettings = new MyShuttle.SettingsLibrary.FileUtilities();
-
-        List<Driver> TrimmedandSortedDriverList;
-        TrimmedandSortedDriverList = SortDriverListBySettings(TrimDriverListById(allDrivers, getMaxId()));
-
-        return TrimmedandSortedDriverList;
+        return m_driverManager.getBestDrivers();
     }
 
     private List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
@@ -64,10 +61,12 @@ public class HomeController : Controller
         return trimmedDriverList;
     }
 
+
     private List<Driver> initializeList()
     {
         //ToDo setup code to initalize list to return new List<Driver>()
-        return null;
+        //return null;
+        return new List<Driver>();
     }
 
     private List<Driver> SortDriverListBySettings(List<Driver> allDrivers)
@@ -80,19 +79,19 @@ public class HomeController : Controller
     private List<Driver> OrderList(List<Driver> listToOrder)
     {
         List<Driver> orderedDriverList = initializeList();
-        listToOrder.OrderBy(d => d.Name).ToList();
+        orderedDriverList = listToOrder.OrderBy(d => d.Name).ToList();
         return orderedDriverList;
     }
 
     private int getMaxId()
     {
-        return 30;
+        return 10;
     }
 
     public JsonResult AllDrivers()
     {
         Debug.WriteLine("Loading All Drivers...");
-        var allDrivers = GetAllDrivers();
+        var allDrivers = GetBestDrivers();
         var json = this.Json(allDrivers, JsonRequestBehavior.AllowGet);
         json.MaxJsonLength = int.MaxValue;
         SaveJpegImages(allDrivers);
@@ -235,5 +234,33 @@ public class HomeController : Controller
             string path = System.Web.HttpContext.Current.Server.MapPath("~" + driver.PictureUrl);
             System.IO.File.WriteAllBytes(path, driver.Picture);
         }
+    }
+}
+
+public class DriverManager
+{
+    // Field
+    public List<Driver> bestDrivers;
+
+    // Constructor that takes one argument.
+    public DriverManager(List<Driver> drivers)
+    {
+        this.bestDrivers = drivers;
+    }
+
+    public void TrimDriversWithLowRatings(int ratingThreshold)
+    {
+        this.bestDrivers.RemoveAll(driver => driver.RatingAvg < ratingThreshold);
+    }
+
+    public void SortDriversByRating()
+    {
+        this.bestDrivers = this.bestDrivers.OrderBy(d => d.RatingAvg).ToList();
+    }
+
+
+    public List<Driver> getBestDrivers()
+    {
+        return this.bestDrivers;
     }
 }
