@@ -38,7 +38,7 @@ public class HomeController : Controller
     public List<Driver> GetBestDrivers()
     {
         int ratingThreshold = 10;
-        this.m_driverManager = new DriverManager(GetDriverList());
+        this.m_driverManager = new DriverManager(GetDriverList(true));
         m_driverManager.TrimDriversWithLowRatings(ratingThreshold);
         m_driverManager.SortDriversByRating();
 
@@ -97,7 +97,6 @@ public class HomeController : Controller
         SaveJpegImages(allDrivers);
         return json;
     }
-
 
     public JsonResult Vehicles()
     {
