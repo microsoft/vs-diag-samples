@@ -194,11 +194,12 @@ public class HomeController : Controller
                 m_cachedResponse = driversStr;
                 m_cachedDrivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
             }
+            return m_cachedDrivers;
         }
 
-        return m_cachedDrivers;
-        //var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
-        //return drivers;
+        //return m_cachedDrivers;
+        var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
+        return drivers;
     }
 
 
