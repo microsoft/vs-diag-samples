@@ -14,6 +14,7 @@ public class HomeController : Controller
     private static string m_cachedResponse = null;
     private static DriverCache m_driverCache = new DriverCache();
     private static List<Driver> m_cachedDrivers = null;
+    private static int m_ratingThreshold = 10;
     public DriverManager m_driverManager = null;
 
     public ActionResult Index()
@@ -37,9 +38,8 @@ public class HomeController : Controller
 
     public List<Driver> GetBestDrivers()
     {
-        int ratingThreshold = 10;
-        this.m_driverManager = new DriverManager(GetDriverList(true));
-        m_driverManager.TrimDriversWithLowRatings(ratingThreshold);
+        this.m_driverManager = new DriverManager(GetDriverList(cacheResponse: true));
+        m_driverManager.TrimDriversWithLowRatings(m_ratingThreshold);
         m_driverManager.SortDriversByRating();
 
         return m_driverManager.getBestDrivers();
@@ -179,7 +179,7 @@ public class HomeController : Controller
 
     private List<Driver> GetDriverList(bool cacheResponse = false)
     {
-        Debug.WriteLine("Getting Driver's List from Backend");
+        //Debug.WriteLine("Getting Driver's List from Backend");
 
         // Use the cached response if one exist
         string driversStr = m_cachedResponse;
