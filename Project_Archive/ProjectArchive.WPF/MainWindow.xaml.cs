@@ -18,14 +18,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace System.Runtime.CompilerServices
-{
-    class AsyncStateMachineAttribute: Attribute
-    {
-        public AsyncStateMachineAttribute(Type t) { }
-    }
-}
-public enum ViewModelMode { Apps, ServerError, TestResults, ParallelMode }
+public enum ViewModelMode { Apps, ServerError, TestResults, ParallelMode, LotteryMode }
 
 public class MainWindowViewModel : ViewModelBase
 {
@@ -111,6 +104,7 @@ public class MainWindowViewModel : ViewModelBase
             OnPropertyChanged("ShowTestResults");
             OnPropertyChanged("ServerError");
             OnPropertyChanged("ParallelMode");
+            OnPropertyChanged("LotteryMode");
         }
     }
 
@@ -129,12 +123,38 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
+    public bool LotteryMode
+    {
+        get
+        {
+            if (m_mode == ViewModelMode.LotteryMode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+
     private List<int> m_primes;
+    private string m_winnerStatus;
+
     public List<int> PrimeNumbers
     {
         get { return m_primes; }
         set { m_primes = value; OnPropertyChanged(); }
     }
+
+    public enum WinnerStatus { Winner, Loser }
+    public string WinnerStatusResult
+    {
+        get { return m_winnerStatus; }
+        set { m_winnerStatus = value; OnPropertyChanged(); }
+    }
+
 }
 
 public class StringProvider
@@ -155,7 +175,7 @@ public class StringProvider
         {
             if (args[x].Equals(TitleParameter, StringComparison.OrdinalIgnoreCase))
             {
-                conf = args[x];
+                conf = args[x + 1];
                 break;
             }
         }
@@ -172,6 +192,52 @@ public class StringProvider
         return "!";
     }
 
+}
+
+public class Game
+{
+    // Field
+    public double userInputGuess;
+    public double endingOutput;
+    public bool isWinnerStatus;
+    //public int delta;
+    public Random random;
+    public static int numIterations = 5;
+
+    // Constructor that takes one argument.
+    public Game(double guess)
+    {
+        userInputGuess = guess;
+        endingOutput = guess;
+        isWinnerStatus = false;
+        //delta = 0;
+        random = new Random();
+    }
+
+
+    public bool isWinner()
+    {
+        return isWinnerStatus;
+    }
+
+    public void runGame()
+    {
+        for (var i = 0; i < numIterations; i++)
+        {
+            //gravity should lean toward negative
+            //var delta = random.Next(-10, 5)/100;
+            var delta = (double)random.Next(-10, 5) / 100;
+            endingOutput += delta;
+        }
+        if (endingOutput >= userInputGuess)
+        {
+            isWinnerStatus = true;
+        }
+        else
+        {
+            isWinnerStatus = false;
+        }
+    }
 }
 
 /// <summary>
@@ -191,14 +257,17 @@ public partial class MainWindow : Window
     Dictionary<string, Certificate> CertificateStore { get; set; }
     string CurrentAppJson { get; set; }
     List<AppInfo> CachedApps { get; set; }
+    Game game;
 
     public MainWindow()
     {
-        InitializeComponent();     
+        InitializeComponent();
+
         var sp = new StringProvider();
         ViewModel = new MainWindowViewModel();
         ViewModel.Greeting = string.Concat(sp.GetGreeting(), " ", sp.GetConference(), sp.GetPunctuation());
         this.DataContext = ViewModel;
+
         this.StringEncoder = new StringUtilities(EncodingFormats.ASCII);
         this.CertificateStore = new Dictionary<string, Certificate>();
     }
@@ -211,8 +280,35 @@ public partial class MainWindow : Window
 
     private async void GetBadUrl_Click(object sender, RoutedEventArgs e)
     {
+        string textProviderOutput = createTextProvider().getSubTextProvider().getSubText();
         var url = IISUrl + WebValueApiUrl;
         await GetAppsFromWebAsync(url);
+    }
+
+    public class TextProvider
+    {
+        public SubTextProvider getSubTextProvider()
+        {
+            return new SubTextProvider();
+        }
+    }
+
+    public class SubTextProvider
+    {
+        public string getSubText()
+        {
+            return "Hello World!";
+        }
+    }
+
+    public TextProvider createTextProvider()
+    {
+        return null;
+    }
+
+    public SubTextProvider createSubTextProvider()
+    {
+        return null;
     }
 
     private void LoadData_Click(object sender, RoutedEventArgs e)
@@ -230,9 +326,15 @@ public partial class MainWindow : Window
             var languages = app.GetLanguagesForDisplay();
             Debug.Assert(languages != null);
         }
+
     }
 
-    
+    private void RandomCalculation_Click(object sender, RoutedEventArgs e)
+    {
+        this.ViewModel.Mode = ViewModelMode.LotteryMode;
+
+    }
+
     private void RunTests_Click(object sender, RoutedEventArgs e)
     {
         var typesToTest = new string[] { "Web", "Mobile", "desktop" };
@@ -289,7 +391,8 @@ public partial class MainWindow : Window
         {
             var json = await WebUtilities.Get(url);
             List<AppInfo> apps = StringUtilities.DeserializeApps(json);
-            var appInfoContainer = new AppInfoContainer(apps);            
+            var appInfoContainer = new AppInfoContainer(apps);
+            cmbItemType.SelectionChanged += appInfoContainer.CmbItemType_SelectionChanged;
             ViewModel.Apps = appInfoContainer.Apps;
             ViewModel.Mode = ViewModelMode.Apps;
         }
@@ -312,7 +415,6 @@ public partial class MainWindow : Window
 
     private void Parallel_Click(object sender, RoutedEventArgs e)
     {
-        SettingsLibrary.FileUtilities usersSettings = new SettingsLibrary.FileUtilities();
         this.ViewModel.Mode = ViewModelMode.ParallelMode;
     }
 
@@ -323,6 +425,27 @@ public partial class MainWindow : Window
 
         this.ViewModel.PrimeNumbers = await NumberUtilities.CalculatePrimesAsync(min, max);
     }
+
+    private void ResetWinnerStatusText_Click(object sender, RoutedEventArgs e)
+    {
+        this.ViewModel.WinnerStatusResult = "";
+    }
+    // Handler for Try My Luck button
+    private void CalculateIfWinner_Click(object sender, RoutedEventArgs e)
+    {
+        this.game = new Game(int.Parse(userGuess.Text));
+        game.runGame();
+        if (game.isWinner())
+        {
+            this.ViewModel.WinnerStatusResult = "Winner";
+        }
+        else
+        {
+            this.ViewModel.WinnerStatusResult = "Loser";
+        }
+    }
+
+
 
     private void Interop_Click(object sender, RoutedEventArgs e)
     {

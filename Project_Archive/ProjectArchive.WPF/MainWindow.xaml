@@ -16,8 +16,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:Converters"
-        mc:Ignorable="d"
+        mc:Ignorable="d"      
         Title="MainWindow" Height="600" Width="800">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVisiblityConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBox">
@@ -50,13 +53,14 @@
         <Label x:Name="lblGreeting" HorizontalAlignment="Center" Content="{Binding Greeting}" FontSize="24"></Label>
         <StackPanel Grid.Row="1">
             <Label x:Name="lblResults" ></Label>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" d:IsLocked="True">
                 <Button Content="Load Data" Click="LoadData_Click"></Button>
                 <Button Content="Run Tests" Click="RunTests_Click"></Button>
+                <Button Content="Ready Game" Click="RandomCalculation_Click"></Button>
                 <Button Content="Get Apps" Click="GetAllApps_Click"></Button>
                 <Button Content="Error" Click="GetBadUrl_Click"></Button>
                 <Button Content="Interop" x:Name="GetCerts" Click="Interop_Click" Visibility="{Binding ShowInteropButton, Converter={StaticResource boolToVisiblityConverter}}"></Button>
-                <Button Content="Par" Click="Parallel_Click" Visibility="Visible"></Button>
+                <Button Content="Par" Click="Parallel_Click"></Button>
             </StackPanel>
         </StackPanel>
         <Grid Grid.Row="2" Visibility="{Binding ShowAppPanel, Converter={StaticResource boolToVisiblityConverter}}">
@@ -92,7 +96,8 @@
             <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"
                     Visibility="{Binding ServerError, Converter={StaticResource boolToVisiblityConverter}}">
                 <Image Source="Resources\Failed.png" Width="18" Height="18" VerticalAlignment="Center"></Image>
-                <TextBlock Margin="5,0,0,0" Text="Error occured contacting server"></TextBlock>
+                <TextBlock Margin="5,0,0,0" Text="
+ occured contacting server"></TextBlock>
             </StackPanel>
         </Grid>
         <StackPanel Margin="6,6,0,0" Grid.Row="2" Visibility="{Binding ShowTestResults, Converter={StaticResource boolToVisiblityConverter}}">
@@ -131,6 +136,22 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+        </Grid>
+        <Grid Grid.Row="3" Visibility="{Binding LotteryMode, Converter={StaticResource boolToVisiblityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Pick a number, any number!" VerticalAlignment="Center"/>
+                <TextBox x:Name="userGuess" Width="70" Text="50"/>
+                <Button Content="Try my luck" Height="30" Click="CalculateIfWinner_Click"/>
+                <Button Content="Reset" Height="30" Click="ResetWinnerStatusText_Click"/>
+
+                <!--<TextBlock x:Name="winnerStatusTextBox" Width="70" Text="{Binding WinnerStatusResult }"/>-->
+                <TextBlock Text="You are a..." VerticalAlignment="Center"/>
+                <TextBlock x:Name="winnerStatusTextBox" Width="70" Text="{Binding WinnerStatusResult}" VerticalAlignment="Center"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
