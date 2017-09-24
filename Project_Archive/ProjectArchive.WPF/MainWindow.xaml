@@ -17,7 +17,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:Converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="600" Width="532.551">
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBox">
@@ -54,9 +54,9 @@
                 <Button Content="Load Data" Click="LoadData_Click"></Button>
                 <Button Content="Run Tests" Click="RunTests_Click"></Button>
                 <Button Content="Get Apps" Click="GetAllApps_Click"></Button>
-                <Button Content="Error" Click="GetBadUrl_Click"></Button>
-                <Button Content="Interop" x:Name="GetCerts" Click="Interop_Click" Visibility="{Binding ShowInteropButton, Converter={StaticResource boolToVisiblityConverter}}"></Button>
-                <Button Content="Par" Click="Parallel_Click" Visibility="Visible"></Button>
+                <Button Content="Parallel" Click="Parallel_Click" Visibility="Visible"></Button>
+                <!--<Button Content="Interop" x:Name="GetCerts" Click="Interop_Click" Visibility="{Binding ShowInteropButton, Converter={StaticResource boolToVisiblityConverter}}"></Button>-->
+                <!--<Button Content="Error" Click="GetBadUrl_Click" Visibility="Hidden" ></Button>-->
             </StackPanel>
         </StackPanel>
         <Grid Grid.Row="2" Visibility="{Binding ShowAppPanel, Converter={StaticResource boolToVisiblityConverter}}">
@@ -92,7 +92,7 @@
             <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"
                     Visibility="{Binding ServerError, Converter={StaticResource boolToVisiblityConverter}}">
                 <Image Source="Resources\Failed.png" Width="18" Height="18" VerticalAlignment="Center"></Image>
-                <TextBlock Margin="5,0,0,0" Text="Error occured contacting server"></TextBlock>
+                <TextBlock Margin="5,0,0,0" Text="Oops an Error occured"></TextBlock>
             </StackPanel>
         </Grid>
         <StackPanel Margin="6,6,0,0" Grid.Row="2" Visibility="{Binding ShowTestResults, Converter={StaticResource boolToVisiblityConverter}}">
@@ -127,7 +127,7 @@
             <ListView ItemsSource="{Binding PrimeNumbers}" Grid.Row="1">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding}"></TextBlock>
+                        <TextBlock Text="{Binding}" FontSize="20"></TextBlock>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

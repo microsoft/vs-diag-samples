@@ -193,7 +193,7 @@ public partial class MainWindow : Window
     List<AppInfo> CachedApps { get; set; }
 
     public MainWindow()
-    {
+    {        
         InitializeComponent();     
         var sp = new StringProvider();
         ViewModel = new MainWindowViewModel();
@@ -229,6 +229,15 @@ public partial class MainWindow : Window
         {
             var languages = app.GetLanguagesForDisplay();
             Debug.Assert(languages != null);
+        }
+
+        AppInfo[] randomApps = new AppInfo[10];
+        foreach( var app in apps)
+        {
+            Random random = new Random();
+            var randomNumber = random.Next(0, 1000);
+            var randomIndex = (app.AppID + randomNumber) % 10;
+            randomApps[randomIndex] = app;
         }
     }
 
@@ -289,7 +298,8 @@ public partial class MainWindow : Window
         {
             var json = await WebUtilities.Get(url);
             List<AppInfo> apps = StringUtilities.DeserializeApps(json);
-            var appInfoContainer = new AppInfoContainer(apps);            
+            var appInfoContainer = new AppInfoContainer(apps);
+            cmbItemType.SelectionChanged += appInfoContainer.CmbItemType_SelectionChanged;
             ViewModel.Apps = appInfoContainer.Apps;
             ViewModel.Mode = ViewModelMode.Apps;
         }
@@ -312,8 +322,39 @@ public partial class MainWindow : Window
 
     private void Parallel_Click(object sender, RoutedEventArgs e)
     {
-        SettingsLibrary.FileUtilities usersSettings = new SettingsLibrary.FileUtilities();
-        this.ViewModel.Mode = ViewModelMode.ParallelMode;
+        try
+        {
+            SettingsLibrary.FileUtilities usersSettings = new SettingsLibrary.FileUtilities();
+            this.ViewModel.Mode = ViewModelMode.ParallelMode;
+            ParallelSetupHelper parallelInitializer = new ParallelSetupHelper();
+                parallelInitializer.Initialize().HelpSimplify().Setup();
+        }
+        catch (Exception ex)
+        {
+            this.ViewModel.Mode = ViewModelMode.ServerError;
+        }
+    }
+
+    public class ParallelSetupHelper
+    {
+        public ParallelSimplifier Initialize()
+        {
+            return new ParallelSimplifier();
+        }
+    }
+
+    public class ParallelSimplifier
+    {
+        public ParallelSimplifier HelpSimplify()
+        {
+             return null;  //TODO figure out what to return
+           
+        }
+
+        public void Setup()
+        {
+            return;
+        }
     }
 
     private async void CalculatePrimes_Click(object sender, RoutedEventArgs e)
