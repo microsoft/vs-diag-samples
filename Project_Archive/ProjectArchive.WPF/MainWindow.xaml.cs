@@ -260,9 +260,8 @@ public partial class MainWindow : Window
     Game game;
 
     public MainWindow()
-    {
-        InitializeComponent();
-
+    {        
+        InitializeComponent();     
         var sp = new StringProvider();
         ViewModel = new MainWindowViewModel();
         ViewModel.Greeting = string.Concat(sp.GetGreeting(), " ", sp.GetConference(), sp.GetPunctuation());
@@ -280,35 +279,8 @@ public partial class MainWindow : Window
 
     private async void GetBadUrl_Click(object sender, RoutedEventArgs e)
     {
-        string textProviderOutput = createTextProvider().getSubTextProvider().getSubText();
         var url = IISUrl + WebValueApiUrl;
         await GetAppsFromWebAsync(url);
-    }
-
-    public class TextProvider
-    {
-        public SubTextProvider getSubTextProvider()
-        {
-            return new SubTextProvider();
-        }
-    }
-
-    public class SubTextProvider
-    {
-        public string getSubText()
-        {
-            return "Hello World!";
-        }
-    }
-
-    public TextProvider createTextProvider()
-    {
-        return null;
-    }
-
-    public SubTextProvider createSubTextProvider()
-    {
-        return null;
     }
 
     private void LoadData_Click(object sender, RoutedEventArgs e)
@@ -327,6 +299,14 @@ public partial class MainWindow : Window
             Debug.Assert(languages != null);
         }
 
+        AppInfo[] randomApps = new AppInfo[10];
+        foreach( var app in apps)
+        {
+            Random random = new Random();
+            var randomNumber = random.Next(0, 1000);
+            var randomIndex = (app.AppID + randomNumber) % 10;
+            randomApps[randomIndex] = app;
+        }
     }
 
     private void RandomCalculation_Click(object sender, RoutedEventArgs e)
@@ -415,7 +395,39 @@ public partial class MainWindow : Window
 
     private void Parallel_Click(object sender, RoutedEventArgs e)
     {
-        this.ViewModel.Mode = ViewModelMode.ParallelMode;
+        try
+        {
+            SettingsLibrary.FileUtilities usersSettings = new SettingsLibrary.FileUtilities();
+            this.ViewModel.Mode = ViewModelMode.ParallelMode;
+            ParallelSetupHelper parallelInitializer = new ParallelSetupHelper();
+                parallelInitializer.Initialize().HelpSimplify().Setup();
+        }
+        catch (Exception ex)
+        {
+            this.ViewModel.Mode = ViewModelMode.ServerError;
+        }
+    }
+
+    public class ParallelSetupHelper
+    {
+        public ParallelSimplifier Initialize()
+        {
+            return new ParallelSimplifier();
+        }
+    }
+
+    public class ParallelSimplifier
+    {
+        public ParallelSimplifier HelpSimplify()
+        {
+             return null;  //TODO figure out what to return
+           
+        }
+
+        public void Setup()
+        {
+            return;
+        }
     }
 
     private async void CalculatePrimes_Click(object sender, RoutedEventArgs e)

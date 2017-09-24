@@ -58,9 +58,9 @@
                 <Button Content="Run Tests" Click="RunTests_Click"></Button>
                 <Button Content="Ready Game" Click="RandomCalculation_Click"></Button>
                 <Button Content="Get Apps" Click="GetAllApps_Click"></Button>
-                <Button Content="Error" Click="GetBadUrl_Click"></Button>
-                <Button Content="Interop" x:Name="GetCerts" Click="Interop_Click" Visibility="{Binding ShowInteropButton, Converter={StaticResource boolToVisiblityConverter}}"></Button>
-                <Button Content="Par" Click="Parallel_Click"></Button>
+                <Button Content="Parallel" Click="Parallel_Click" Visibility="Visible"></Button>
+                <!--<Button Content="Interop" x:Name="GetCerts" Click="Interop_Click" Visibility="{Binding ShowInteropButton, Converter={StaticResource boolToVisiblityConverter}}"></Button>-->
+                <!--<Button Content="Error" Click="GetBadUrl_Click" Visibility="Hidden" ></Button>-->
             </StackPanel>
         </StackPanel>
         <Grid Grid.Row="2" Visibility="{Binding ShowAppPanel, Converter={StaticResource boolToVisiblityConverter}}">
@@ -96,8 +96,7 @@
             <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"
                     Visibility="{Binding ServerError, Converter={StaticResource boolToVisiblityConverter}}">
                 <Image Source="Resources\Failed.png" Width="18" Height="18" VerticalAlignment="Center"></Image>
-                <TextBlock Margin="5,0,0,0" Text="
- occured contacting server"></TextBlock>
+                <TextBlock Margin="5,0,0,0" Text="Oops an Error occured"></TextBlock>
             </StackPanel>
         </Grid>
         <StackPanel Margin="6,6,0,0" Grid.Row="2" Visibility="{Binding ShowTestResults, Converter={StaticResource boolToVisiblityConverter}}">
@@ -132,7 +131,7 @@
             <ListView ItemsSource="{Binding PrimeNumbers}" Grid.Row="1">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding}"></TextBlock>
+                        <TextBlock Text="{Binding}" FontSize="20"></TextBlock>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

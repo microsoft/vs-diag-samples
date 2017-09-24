@@ -22,7 +22,7 @@ public class NumberUtilities
         var primeList = await Task.Run(() =>
         {
             var primes = from n in array.AsParallel()
-                         where IsPrime(n)
+                         where IsPrime(n) 
                          select n;
             return primes.ToList();
         });

@@ -26,14 +26,15 @@ namespace SettingsLibrary
         }
 
 
-        
+        //[System.Diagnostics.DebuggerNonUserCode]
         public void LoadSettings(string[] keys)
         {
             foreach (var key in keys)
             {
                 try
                 {
-                    var val = GetKeyValue(RegistryKeyRoot, key);
+                    var val = 
+                    GetKeyValue(RegistryKeyRoot, key);
                     m_settings.Add(RegistryKeyRoot + key, val);
                 }
                 catch (Exception ex)
@@ -43,12 +44,21 @@ namespace SettingsLibrary
             }
         }
 
+
+
+
+
+
+
+
+
+        [System.Diagnostics.DebuggerNonUserCode]
         public string GetKeyValue(string key, string name)
         {
             var val = (string)Registry.GetValue(key, name, null);
             if(val == null)
             {
-                throw new ArgumentException($"Registry Key {key+ name} does not exist");
+                throw new System.Exception("Something went wrong", new ArgumentException($"Key {key + name} has no value", new ArgumentException($"Registry Key {name} does not exist")));
             }
             return val;
         }
