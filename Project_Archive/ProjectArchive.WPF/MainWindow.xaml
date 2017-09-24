@@ -17,7 +17,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:Converters"
         mc:Ignorable="d"      
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="600" Width="652.564">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="boolToVisiblityConverter"/>
     </Window.Resources>
@@ -56,9 +56,9 @@
             <StackPanel Orientation="Horizontal" d:IsLocked="True">
                 <Button Content="Load Data" Click="LoadData_Click"></Button>
                 <Button Content="Run Tests" Click="RunTests_Click"></Button>
-                <Button Content="Ready Game" Click="RandomCalculation_Click"></Button>
                 <Button Content="Get Apps" Click="GetAllApps_Click"></Button>
                 <Button Content="Parallel" Click="Parallel_Click" Visibility="Visible"></Button>
+                <Button Content="Feeling Lucky" Click="RandomCalculation_Click"></Button>
                 <!--<Button Content="Interop" x:Name="GetCerts" Click="Interop_Click" Visibility="{Binding ShowInteropButton, Converter={StaticResource boolToVisiblityConverter}}"></Button>-->
                 <!--<Button Content="Error" Click="GetBadUrl_Click" Visibility="Hidden" ></Button>-->
             </StackPanel>
@@ -142,7 +142,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Pick a number, any number!" VerticalAlignment="Center"/>
+                <TextBlock Text="Lucky Number?" VerticalAlignment="Center"/>
                 <TextBox x:Name="userGuess" Width="70" Text="50"/>
                 <Button Content="Try my luck" Height="30" Click="CalculateIfWinner_Click"/>
                 <Button Content="Reset" Height="30" Click="ResetWinnerStatusText_Click"/>
