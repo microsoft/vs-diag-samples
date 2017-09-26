@@ -226,7 +226,7 @@ public class Game
         {
             //gravity should lean toward negative
             var delta = random.Next(-10, 5)/100;
-            //var delta = (double)random.Next(-10, 5) / 100;
+            
             endingOutput += delta;
         }
         if (endingOutput >= userInputGuess)
