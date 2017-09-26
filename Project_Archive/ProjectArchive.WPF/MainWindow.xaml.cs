@@ -175,7 +175,7 @@ public class StringProvider
         {
             if (args[x].Equals(TitleParameter, StringComparison.OrdinalIgnoreCase))
             {
-                conf = args[x + 1];
+                conf = args[x];
                 break;
             }
         }
