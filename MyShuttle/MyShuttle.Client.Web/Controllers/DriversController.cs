@@ -19,14 +19,15 @@ namespace MyShuttle.Client.Web.Controllers
     public class DriversController : ApiController
     {
         //const string SeconardyService = "http://myshuttleservice.azurewebsites.net/";
-        const string SeconardyService = "http://localhost:39012/";
+        const string SecondaryService = "http://myshuttlediagnosticsservice.azurewebsites.net/";
+        //const string SeconardyService = "http://localhost:39012/";
         const string DriversWebApiUrl = "/api/Drivers";
-
+        
         // GET: api/Drivers
         public JsonResult<List<Driver>> Get()
         {
-            var url = SeconardyService + DriversWebApiUrl;
-            var request = new BaseRequest(SeconardyService, string.Empty);
+            var url = SecondaryService + DriversWebApiUrl;
+            var request = new BaseRequest(SecondaryService, string.Empty);
             var driversStr = request.GetString(url);
             var drivers = JsonConvert.DeserializeObject<List<Driver>>(driversStr);
 

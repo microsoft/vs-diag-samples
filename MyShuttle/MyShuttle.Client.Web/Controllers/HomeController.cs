@@ -14,11 +14,14 @@ public class HomeController : Controller
     private static string m_cachedResponse = null;
     private static DriverCache m_driverCache = new DriverCache();
     private static List<Driver> m_cachedDrivers = null;
-    private static int m_ratingThreshold = 10;
+    private static int m_ratingThreshold = 3;
     public DriverManager m_driverManager = null;
 
     public ActionResult Index()
     {
+        int a = 100;
+        int b = 200;
+        int c = a + b;
         return View();
     }
 
@@ -31,19 +34,19 @@ public class HomeController : Controller
 
     public ActionResult Contact()
     {
-        //GetAllDrivers();
+        AllDrivers();
 
         return View();
     }
 
-    public List<Driver> GetBestDrivers()
-    {
-        this.m_driverManager = new DriverManager(GetDriverList(cacheResponse: true));
-        m_driverManager.TrimDriversWithLowRatings(m_ratingThreshold);
-        m_driverManager.SortDriversByRating();
+    //public List<Driver> GetBestDrivers()
+    //{   
+    //    this.m_driverManager = new DriverManager(GetDriverList(cacheResponse: false));
+    //    m_driverManager.TrimDriversWithLowRatings(m_ratingThreshold);
+    //    m_driverManager.SortDriversByRating();
 
-        return m_driverManager.getBestDrivers();
-    }
+    //    return m_driverManager.getBestDrivers();
+    //}
 
     private List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
     {
@@ -90,17 +93,23 @@ public class HomeController : Controller
 
     public JsonResult AllDrivers()
     {
-        Debug.WriteLine("Loading All Drivers...");
-        var allDrivers = GetBestDrivers();
+        var allDrivers = m_cachedDrivers;
+        var driverManager = new DriverManager(allDrivers);
+        driverManager.TrimDriversWithLowRatings(m_ratingThreshold);
+        driverManager.SortDriversByRating();
+        var bestDrivers = driverManager.getBestDrivers();
+
         var json = this.Json(allDrivers, JsonRequestBehavior.AllowGet);
         json.MaxJsonLength = int.MaxValue;
-        SaveJpegImages(allDrivers);
+        SaveJpegImages(bestDrivers);
         return json;
     }
 
     public JsonResult Vehicles()
     {
         Debug.WriteLine("Loading Vehicles...");
+        GetDriverList(cacheResponse: true);
+
         var vehicles = VehiclesModel.Vehicles;
 
         var json = this.Json(vehicles, JsonRequestBehavior.AllowGet);
@@ -177,7 +186,7 @@ public class HomeController : Controller
         return driver;
     }
 
-    private List<Driver> GetDriverList(bool cacheResponse = false)
+    private List<Driver> GetDriverList(bool cacheResponse = true)
     {
         //Debug.WriteLine("Getting Driver's List from Backend");
 
