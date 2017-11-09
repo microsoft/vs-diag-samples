@@ -249,6 +249,7 @@
     <Content Include="App_Start\Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="App_Data\drivers.json" />
     <Content Include="App_Data\vehicles.json" />
+    <None Include="Properties\PublishProfiles\MyShuttleDiagnosticsService - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MyShuttleService - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

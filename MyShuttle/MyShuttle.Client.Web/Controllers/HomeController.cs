@@ -41,8 +41,7 @@ public class HomeController : Controller
         this.m_driverManager = new DriverManager(GetDriverList(cacheResponse: true));
         m_driverManager.TrimDriversWithLowRatings(m_ratingThreshold);
         m_driverManager.SortDriversByRating();
-
-        return m_driverManager.getBestDrivers();
+        return m_driverManager.BestDrivers;
     }
 
     private List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
@@ -102,7 +101,6 @@ public class HomeController : Controller
     {
         Debug.WriteLine("Loading Vehicles...");
         var vehicles = VehiclesModel.Vehicles;
-
         var json = this.Json(vehicles, JsonRequestBehavior.AllowGet);
         json.MaxJsonLength = int.MaxValue;
         foreach (var vehicle in vehicles)
@@ -136,7 +134,10 @@ public class HomeController : Controller
 
         try
         {
-            selectedDriver = drivers.Where(d => driver.id.Equals(d.DriverId)).FirstOrDefault();
+            //selectedDriver = drivers.Where(d => driver.id.Equals(d.DriverId)).FirstOrDefault();
+            //this causes an exception. 
+            selectedDriver = drivers.Where(d => driver.name.Equals(d.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+
         }
         catch (Exception)
         {
@@ -147,6 +148,11 @@ public class HomeController : Controller
                 Name = "Unknown",
                 Picture = AppSettings.PlaceHolderPicture
             };
+            //selectedDriver = new Driver();
+            //selectedDriver.DriverId = 0;
+            //selectedDriver.Name = "Unknown";
+            //selectedDriver.Picture = AppSettings.PlaceHolderPicture;
+
         }
 
         return selectedDriver;
@@ -237,30 +243,44 @@ public class HomeController : Controller
     }
 }
 
+
 public class DriverManager
 {
-    // Field
-    public List<Driver> bestDrivers;
+
+    public List<Driver> BestDrivers { get; set; }
+    public List<Vehicle> Vehicles { get; }
 
     // Constructor that takes one argument.
     public DriverManager(List<Driver> drivers)
     {
-        this.bestDrivers = drivers;
+        BestDrivers = drivers;
+    }
+
+    public DriverManager(List<Driver> drivers, List<Vehicle> vehicles)
+    {
+        BestDrivers = drivers;
+        Vehicles = vehicles;
     }
 
     public void TrimDriversWithLowRatings(int ratingThreshold)
     {
-        this.bestDrivers.RemoveAll(driver => driver.RatingAvg < ratingThreshold);
+        this.BestDrivers.RemoveAll(driver => driver.RatingAvg < ratingThreshold);
     }
 
     public void SortDriversByRating()
     {
-        this.bestDrivers = this.bestDrivers.OrderBy(d => d.RatingAvg).ToList();
+        this.BestDrivers.OrderBy(d => d.RatingAvg).ToList();
     }
 
-
-    public List<Driver> getBestDrivers()
+    public string getDriverRatingDescription(Driver driver)
     {
-        return this.bestDrivers;
+        var description = "";
+        if (driver.RatingAvg >= 0 && driver.RatingAvg <= 2.5)
+            description = "Low";
+        else if (driver.RatingAvg > 2.5 && driver.RatingAvg <= 4.5)
+            description = "Medium";
+        else if (driver.RatingAvg >= 4.5)
+            description = "High";
+        return description;
     }
 }
