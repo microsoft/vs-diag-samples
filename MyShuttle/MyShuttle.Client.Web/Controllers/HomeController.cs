@@ -39,9 +39,14 @@ public class HomeController : Controller
     public List<Driver> GetBestDrivers()
     {
         this.m_driverManager = new DriverManager(GetDriverList(cacheResponse: true));
-        m_driverManager.TrimDriversWithLowRatings(m_ratingThreshold);
-        m_driverManager.SortDriversByRating();
-        return m_driverManager.BestDrivers;
+        
+        //TODO: Implement logic to get best drivers with DriverManager object.  
+
+        return new List<Driver>();
+
+        //m_driverManager.TrimDriversWithLowRatings(m_ratingThreshold);
+        //m_driverManager.SortDriversByRating();
+        //return m_driverManager.BestDrivers;
     }
 
     private List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
@@ -134,9 +139,9 @@ public class HomeController : Controller
 
         try
         {
-            //selectedDriver = drivers.Where(d => driver.id.Equals(d.DriverId)).FirstOrDefault();
+            selectedDriver = drivers.Where(d => driver.id.Equals(d.DriverId)).FirstOrDefault();
             //this causes an exception. 
-            selectedDriver = drivers.Where(d => driver.name.Equals(d.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+            //selectedDriver = drivers.Where(d => driver.name.Equals(d.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
 
         }
         catch (Exception)
@@ -256,11 +261,11 @@ public class DriverManager
         BestDrivers = drivers;
     }
 
-    public DriverManager(List<Driver> drivers, List<Vehicle> vehicles)
-    {
-        BestDrivers = drivers;
-        Vehicles = vehicles;
-    }
+    //public DriverManager(List<Driver> drivers, List<Vehicle> vehicles)
+    //{
+    //    BestDrivers = drivers;
+    //    Vehicles = vehicles;
+    //}
 
     public void TrimDriversWithLowRatings(int ratingThreshold)
     {
@@ -287,8 +292,9 @@ public class DriverManager
         var description = "";
         if (driver.RatingAvg >= 0 && driver.RatingAvg <= 2.5)
             description = "Low";
-        else if (driver.RatingAvg > 2.5 && driver.RatingAvg <= 4.5)
-            description = "Medium";
+        // TODO: Implement logic for Medium rating 
+        //else if (driver.RatingAvg > 2.5 && driver.RatingAvg <= 4.5)
+        //    description = "Medium";
         else if (driver.RatingAvg >= 4.5)
             description = "High";
         return description;
