@@ -264,7 +264,17 @@ public class DriverManager
 
     public void TrimDriversWithLowRatings(int ratingThreshold)
     {
-        this.BestDrivers.RemoveAll(driver => driver.RatingAvg < ratingThreshold);
+        //iterate backwards through collection
+        for (var i = BestDrivers.Count - 1; i >= 0; i--)
+        {
+            Driver driver = BestDrivers[i];
+            if (driver.RatingAvg < ratingThreshold)
+            {
+                BestDrivers.RemoveAt(i);
+            }
+        }
+
+        //this.BestDrivers.RemoveAll(driver => driver.RatingAvg < ratingThreshold);
     }
 
     public void SortDriversByRating()
