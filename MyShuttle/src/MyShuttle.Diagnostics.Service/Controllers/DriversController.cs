@@ -17,7 +17,7 @@ namespace MyShuttle.Diagnostics.Service.Controllers
     {
         public JsonResult<List<Driver>> Get()
         {
-            Thread.Sleep(2000);
+            // Thread.Sleep(2000);
             var drivers = VehiclesModel.Drivers.Values.ToList();
             //for (int i = 0; i < 100000; i++)
             //{

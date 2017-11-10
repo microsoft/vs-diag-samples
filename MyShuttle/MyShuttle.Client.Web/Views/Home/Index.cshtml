@@ -4,8 +4,11 @@
 
 <div class="row">
     <div style="background-color: black;">
-        <h1 class="header-text header-banner">Diagnostics Shuttle</h1>
-        <p class="lead header-text">Need to get somewhere? Get the best drivers: <a href="Home/Contact">The Diagnostics PM Team</a> is here to help!</p>
+        <h1 class="header-text header-banner">Diagnostics Shuttle <a href="Home/Contact" class="btn btn-default get-best-drivers-btn"> Get Best Drivers</a></h1>
+
+        <p class="lead header-text">
+            Need to get somewhere? <a href="Home/Contact">The Diagnostics PM Team</a> is here to help!
+        </p>
     </div>
 </div>
 <div class="row">
@@ -15,30 +18,29 @@
         </div>
         <progress data-bind="style: { display: vehicleProgressDisplay }"></progress>
         <div data-bind="foreach: vehicles">
-                <div class="row">
-                    <h4>
-                        <span data-bind="text: Make"></span>
-                        <span data-bind="text: Model"></span>
-                        <input class="btn btn-default" data-bind="click: $root.driverClicked" type="button" value="Select" />
-                    </h4>
-                </div>
-                <div class="row">
-                    <img data-bind="attr: { src: PictureUrl }" />
-                </div>
-                <div class="spacer">
-                </div>
-        </div>
-    </div>
-    <div class="col-md-6"></div>
-        <div>
-            <h2>Driver Details</h2>
-            <progress data-bind="style: { display: driverProgressDisplay }"></progress>
-            <div data-bind="style: { display: driverDisplay }">
-                <p><b>Driver:</b> <span data-bind="text: driver.Name"></span></p>
-                <img data-bind="attr: { src: driver.PictureUrl }" />
+            <div class="row">
+                <h4>
+                    <span data-bind="text: Make"></span>
+                    <span data-bind="text: Model"></span>
+                    <input class="btn btn-default" data-bind="click: $root.driverClicked" type="button" value="Select" />
+                </h4>
+            </div>
+            <div class="row">
+                <img data-bind="attr: { src: PictureUrl }" />
+            </div>
+            <div class="spacer">
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <h2>Driver Details</h2>
+        <progress data-bind="style: { display: driverProgressDisplay }"></progress>
+        <div data-bind="style: { display: driverDisplay }">
+            <p><b>Driver:</b> <span data-bind="text: driver.Name"></span></p>
+            <img data-bind="attr: { src: driver.PictureUrl }" />
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     viewModel = {};
     viewModel.vehicleProgressDisplay = ko.observable("block");
