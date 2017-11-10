@@ -4,7 +4,7 @@ namespace MyShuttle.Client.Core.DocumentResponse
     using System.Collections.Generic;
     using System.Diagnostics;
 
-    //[DebuggerDisplay("DriverID: {DriverId}, Name: {Name}")]
+    [DebuggerDisplay("DriverID: {DriverId}, Name: {Name}")]
     public class Driver
     {
         public int DriverId { get; set; }

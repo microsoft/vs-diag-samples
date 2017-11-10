@@ -17,10 +17,14 @@
         <ul data-bind="foreach: drivers" class="vehicleList">
             <li>
                 <h3>
-                    Name: 
+                    Name:
                     <span data-bind="text: Name"></span>
                     @*<span data-bind="text: Model"></span>
-                    <input class="btn btn-default" data-bind="click: $root.driverClicked" type="button" value="Select" />*@
+            <input class="btn btn-default" data-bind="click: $root.driverClicked" type="button" value="Select" />*@
+                </h3>
+                <h3>
+                    Rating:
+                    <span data-bind="text: RatingAvg"></span>
                 </h3>
                 <img data-bind="attr: { src: PictureUrl }" />
             </li>
