@@ -39,7 +39,6 @@ public class HomeController : Controller
     public List<Driver> GetBestDrivers()
     {
         this.m_driverManager = new DriverManager(GetDriverList(cacheResponse: true));
-        
         //TODO: Implement logic to get best drivers with DriverManager object.  
 
         return new List<Driver>();
@@ -265,9 +264,11 @@ public class DriverManager
         //iterate backwards through collection
         for (var i = BestDrivers.Count - 1; i >= 0; i--)
         {
-            Driver driver = BestDrivers[i];
-            if (driver.RatingAvg <= ratingThreshold)
-                BestDrivers.RemoveAt(i);
+            //TODO: Implement rating check
+
+            //Driver driver = BestDrivers[i];
+            //if (driver.RatingAvg <= ratingThreshold)
+            //    BestDrivers.RemoveAt(i);
         }
     }
 
