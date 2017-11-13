@@ -267,8 +267,7 @@ public class DriverManager
         //iterate backwards through collection
         for (var i = BestDrivers.Count - 1; i >= 0; i--)
         {
-            //TODO: Implement rating check
-
+            //Implement rating check
             Driver driver = BestDrivers[i];
             if (driver.RatingAvg <= ratingThreshold)
                 BestDrivers.RemoveAt(i);
