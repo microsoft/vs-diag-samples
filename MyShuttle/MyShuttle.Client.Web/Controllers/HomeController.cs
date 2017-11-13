@@ -249,15 +249,18 @@ public class DriverManager
 {
 
     public List<Driver> BestDrivers { get; set; }
-    public List<Vehicle> Vehicles { get; }
 
-    // Constructor that takes one argument.
+    // Constructor that takes in Drivers
     public DriverManager(List<Driver> drivers)
     {
         BestDrivers = drivers;
     }
 
-    // Placeholder for another constructor
+    // Constructor that takes in Drivers and Vehicles
+    public DriverManager(List<Driver> drivers, List<Vehicle> vehicles)
+    {
+        BestDrivers = drivers;
+    }
 
     public void TrimDriversWithLowRatings(int ratingThreshold)
     {
@@ -266,9 +269,9 @@ public class DriverManager
         {
             //TODO: Implement rating check
 
-            //Driver driver = BestDrivers[i];
-            //if (driver.RatingAvg <= ratingThreshold)
-            //    BestDrivers.RemoveAt(i);
+            Driver driver = BestDrivers[i];
+            if (driver.RatingAvg <= ratingThreshold)
+                BestDrivers.RemoveAt(i);
         }
     }
 
