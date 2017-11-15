@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.25427.0
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Client.Desktop", "src\MyShuttle.Client.Desktop\MyShuttle.Client.Desktop.csproj", "{1919B146-9D43-4FBC-A60B-E0272BCA54EC}"
 EndProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.Client.SharedLibrary", "MyShuttle.Client.SharedLibrary\MyShuttle.Client.SharedLibrary.csproj", "{66D11FD4-F878-4E4E-A73B-B7A07CF07A0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttle.SettingsLibrary", "MyShuttle.SettingsLibrary\MyShuttle.SettingsLibrary.csproj", "{9C02ECED-AF6A-42EC-A6CD-E32C5CC04449}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShuttleWebTests", "..\..\..\vs-diag\vs-diag-samples\MyShuttle\MyShuttleWebTests\MyShuttleWebTests.csproj", "{4A81BE1E-86FB-4BE9-B4B7-0100C9865AF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,11 +49,18 @@ Global
 		{9C02ECED-AF6A-42EC-A6CD-E32C5CC04449}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C02ECED-AF6A-42EC-A6CD-E32C5CC04449}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C02ECED-AF6A-42EC-A6CD-E32C5CC04449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A81BE1E-86FB-4BE9-B4B7-0100C9865AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A81BE1E-86FB-4BE9-B4B7-0100C9865AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A81BE1E-86FB-4BE9-B4B7-0100C9865AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A81BE1E-86FB-4BE9-B4B7-0100C9865AF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2D6E738A-2CAC-4501-B49C-02047FD1D5AC} = {6BA91B47-D180-473A-B6EF-2A9F847514F1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A73A46AC-FBA0-4E7C-9B21-C078C770153E}
 	EndGlobalSection
 EndGlobal
