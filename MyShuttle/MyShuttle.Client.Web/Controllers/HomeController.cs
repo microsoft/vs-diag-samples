@@ -14,7 +14,7 @@ public class HomeController : Controller
     private static string m_cachedResponse = null;
     private static DriverCache m_driverCache = new DriverCache();
     private static List<Driver> m_cachedDrivers = null;
-    private static int m_ratingThreshold = 10;
+    private static int m_ratingThreshold = 5;
     public DriverManager m_driverManager = null;
 
     public ActionResult Index()
@@ -39,10 +39,9 @@ public class HomeController : Controller
     public List<Driver> GetBestDrivers()
     {
         this.m_driverManager = new DriverManager(GetDriverList(cacheResponse: true));
-        //TODO: Implement logic to get best drivers with DriverManager object.  
-
-        return new List<Driver>();
-
+        m_driverManager.TrimDriversWithLowRatings(m_ratingThreshold);
+        m_driverManager.SortDriversByRating();
+        return m_driverManager.BestDrivers;
     }
 
     private List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
@@ -269,7 +268,7 @@ public class DriverManager
         {
             //Implement rating check
             Driver driver = BestDrivers[i];
-            if (driver.RatingAvg <= ratingThreshold)
+            if (driver.RatingAvg < ratingThreshold)
                 BestDrivers.RemoveAt(i);
         }
     }
