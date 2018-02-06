@@ -260,7 +260,7 @@ public class DriverManager
     // Constructor that takes in Drivers
     public DriverManager(List<Driver> drivers)
     {
-        BestDrivers = drivers;
+        BestDrivers = new List<Driver>(drivers);
     }
 
     // Constructor that takes in Drivers and Vehicles
