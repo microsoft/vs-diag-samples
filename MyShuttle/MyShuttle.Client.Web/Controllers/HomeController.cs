@@ -14,7 +14,6 @@ public class HomeController : Controller
     private static string m_cachedResponse = null;
     private static DriverCache m_driverCache = new DriverCache();
     private static List<Driver> m_cachedDrivers = null;
-    private static int m_ratingThreshold = 5;
     public DriverManager m_driverManager = null;
 
     public ActionResult Index()
@@ -36,13 +35,13 @@ public class HomeController : Controller
         return View();
     }
 
-    public List<Driver> GetBestDrivers()
-    {
-        this.m_driverManager = new DriverManager(GetDriverList(cacheResponse: true));
-        m_driverManager.TrimDriversWithLowRatings();
-        m_driverManager.SortDriversByRating();
-        return m_driverManager.BestDrivers;
-    }
+    //public List<Driver> GetBestDrivers()
+    //{
+    //    this.m_driverManager = new DriverManager(GetDriverList(cacheResponse: true));
+    //    m_driverManager.TrimDriversWithLowRatings();
+    //    m_driverManager.SortDriversByRating();
+    //    return m_driverManager.BestDrivers;
+    //}
 
     private List<Driver> TrimDriverListById(List<Driver> allDrivers, int maxId)
     {
@@ -87,13 +86,21 @@ public class HomeController : Controller
         return 10;
     }
 
-    public JsonResult AllDrivers()
+    public JsonResult BestDrivers()
     {
-        Debug.WriteLine("Loading All Drivers...");
-        var allDrivers = GetBestDrivers();
-        var json = this.Json(allDrivers, JsonRequestBehavior.AllowGet);
+        //Debug.WriteLine("Loading Best Drivers...");
+
+        var allDrivers = m_cachedDrivers;
+        this.m_driverManager = new DriverManager(allDrivers);
+        m_driverManager.TrimDriversWithLowRatings();
+        m_driverManager.SortDriversByRating();
+        var bestDrivers = m_driverManager.BestDrivers;
+
+        SaveJpegImages(bestDrivers);
+        
+        //Return json
+        var json = this.Json(bestDrivers, JsonRequestBehavior.AllowGet);
         json.MaxJsonLength = int.MaxValue;
-        SaveJpegImages(allDrivers);
         return json;
     }
 
