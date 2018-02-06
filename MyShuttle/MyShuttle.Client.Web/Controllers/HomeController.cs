@@ -39,7 +39,7 @@ public class HomeController : Controller
     public List<Driver> GetBestDrivers()
     {
         this.m_driverManager = new DriverManager(GetDriverList(cacheResponse: true));
-        m_driverManager.TrimDriversWithLowRatings(m_ratingThreshold);
+        m_driverManager.TrimDriversWithLowRatings();
         m_driverManager.SortDriversByRating();
         return m_driverManager.BestDrivers;
     }
@@ -120,7 +120,8 @@ public class HomeController : Controller
         var clientDriver = new Driver()
         {
             Name = driver.Name,
-            PictureUrl = driver.PictureUrl
+            PictureUrl = driver.PictureUrl,
+            RatingAvg = driver.RatingAvg
         };
         var json = Json(clientDriver, JsonRequestBehavior.AllowGet);
         return json;
@@ -261,15 +262,17 @@ public class DriverManager
         BestDrivers = drivers;
     }
 
-    public void TrimDriversWithLowRatings(int ratingThreshold)
+    public void TrimDriversWithLowRatings()
     {
         //iterate backwards through collection
         for (var i = BestDrivers.Count - 1; i >= 0; i--)
         {
-            //Implement rating check
+            //Keep drivers with rating 4 or 5
             Driver driver = BestDrivers[i];
-            if (driver.RatingAvg < ratingThreshold)
+            if (!(driver.RatingAvg == 4 || driver.RatingAvg == 5 ))
+            {
                 BestDrivers.RemoveAt(i);
+            }
         }
     }
 

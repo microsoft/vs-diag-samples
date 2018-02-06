@@ -37,6 +37,7 @@
         <progress data-bind="style: { display: driverProgressDisplay }"></progress>
         <div data-bind="style: { display: driverDisplay }">
             <p><b>Driver:</b> <span data-bind="text: driver.Name"></span></p>
+            <p><b>Rating:</b> <span data-bind="text: driver.RatingAvg"></span></p>
             <img data-bind="attr: { src: driver.PictureUrl }" />
         </div>
     </div>
@@ -49,7 +50,8 @@
     viewModel.vehicles = ko.observable([]);
     viewModel.driver = ko.mapping.fromJS({
         Name: 'Loading...',
-        PictureUrl: ''
+        PictureUrl: '',
+        RatingAvg: ''
     });
     ko.applyBindings(viewModel);
 
