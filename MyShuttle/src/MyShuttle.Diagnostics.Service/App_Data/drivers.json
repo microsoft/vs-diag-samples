@@ -33,7 +33,7 @@
     "CarrierId": 1,
     "Carrier": null,
     "VehicleId": null,
-    "RatingAvg": 4.6,
+    "RatingAvg": 4.0,
     "TotalRides": 83,
     "Vehicle": null,
     "Rides": null
@@ -46,7 +46,7 @@
     "CarrierId": 1,
     "Carrier": null,
     "VehicleId": null,
-    "RatingAvg": 4.0,
+    "RatingAvg": 4.6,
     "TotalRides": 66,
     "Vehicle": null,
     "Rides": null
